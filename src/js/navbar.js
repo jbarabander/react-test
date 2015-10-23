@@ -1,4 +1,7 @@
 var React = require('react');
+var keyGen = require('./utilities').keyGen;
+
+var data = [{name: 'hello', key: keyGen(8)}, {name: 'boo', key: keyGen(8)}, {name: 'blah', key: keyGen(8)}];
 
 module.exports = React.createClass({
     render: function () {
@@ -6,16 +9,12 @@ module.exports = React.createClass({
             <div>
                 <div className='navbar navbar-inverse'>
                     <div className='container-fluid'>
-                        <div className='navbar-left'>
-                            <div className='nav navbar-nav'>
-                                <a href="#">Welcome {this.props.name}</a>
-                            </div>
-                        </div>
+                        <a className='navbar-brand' href="#">Welcome {this.props.name}</a>
                         <div className='navbar-right'>
                             <ul className='nav navbar-nav'>
-                                <li><a href="#">hello</a></li>
-                                <li><a href="#">boo</a></li>
-                                <li><a href="#">blah</a></li>
+                                {data.map(function(element) {
+                                    return <li key={element.key}><a href="#">{element.name}</a></li>
+                                })}
                             </ul>
                         </div>
                     </div>
