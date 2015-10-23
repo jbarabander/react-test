@@ -5,11 +5,13 @@ module.exports = React.createClass({
         return (
             <div>
                 <div className='navbar navbar-inverse'>
-                    <ul className='nav navbar-nav'>
-                        <li><a href="#">hello</a></li>
-                        <li><a href="#">boo</a></li>
-                        <li><a href="#">blah</a></li>
-                    </ul>
+                    <div className='navbar-right'>
+                        <ul className='nav navbar-nav'>
+                            <li><a href="#">hello</a></li>
+                            <li><a href="#">boo</a></li>
+                            <li><a href="#">blah</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         )
