@@ -1,0 +1,42 @@
+$view-btn-color: #039be5;
+$about-btn-color: #f4511e;
+
+@mixin animateButton($button-color, $animation-name) {
+  @keyframes #{$animation-name} {
+    from {
+      background-color: white;
+      color: $button-color;
+    }
+    to {
+      background-color: $button-color;
+      color: white;
+    }
+  }
+}
+
+@include animateButton($view-btn-color, 'view-button');
+@include animateButton($about-btn-color, 'about-button');
+
+.view {
+  background: white !important;
+  color: $view-btn-color;
+  border: 1.5px solid $view-btn-color;
+  border-radius: 50px;
+}
+.view:hover {
+  animation-name: view-button;
+  animation-duration: .4s;
+  animation-fill-mode: forwards;
+}
+
+.about {
+  background: white !important;
+  color: $about-btn-color;
+  border: 1.5px solid $about-btn-color;
+  border-radius: 50px;
+}
+.about:hover {
+  animation-name: about-button;
+  animation-duration: .4s;
+  animation-fill-mode: forwards;
+}
