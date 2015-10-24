@@ -6,6 +6,9 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
 var streamify = require('streamify');
+var sass = require('gulp-sass');
+var rename = require('gulp-rename');
+var notify = require('gulp-notify');
 
 var path = {
     HTML: 'src/views/index.html',
@@ -41,7 +44,7 @@ gulp.task('watch', function() {
     .pipe(gulp.dest(path.DEST_SRC));
 });
 
-gulp.task('build', function() {
+gulp.task('buildJS', function() {
     browserify({
         entries: [path.ENTRY_POINT],
         transform:[reactify]
@@ -50,6 +53,17 @@ gulp.task('build', function() {
     .pipe(streamify(uglify(path.MINIFIED_OUT)))
     .pipe(gulp.dest(path.DEST_BUILD));
 });
+
+gulp.task('buildCSS', function () {
+    return gulp.src('./src/scss/main.scss')
+        .pipe(sass({
+            errLogToConsole: true
+        }))
+        .pipe(rename('style.css'))
+        .pipe(gulp.dest('./dist'))
+        .pipe(notify({message: 'CSS tasks complete'}));
+});
+
 gulp.task('replaceHTML', function() {
     gulp.src(path.HTML)
     .pipe(htmlreplace({
@@ -57,7 +71,7 @@ gulp.task('replaceHTML', function() {
         }))
     .pipe(gulp.dest(path.DEST));
 });
-gulp.task('production', ['replaceHTML', 'build']);
+gulp.task('production', ['replaceHTML', 'buildJS', 'buildCSS']);
 
 gulp.task('default', ['watch']);
 

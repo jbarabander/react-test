@@ -6,7 +6,7 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div className='text-center'>
-                <Navbar name={this.props.name}/>
+                <Navbar name={this.props.name.first}/>
                 <Jumbo passage={this.props.passage}/>
             </div>
         )
