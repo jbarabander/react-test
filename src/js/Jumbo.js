@@ -7,6 +7,9 @@ module.exports = React.createClass({
             zeta: 'chi'
         }
     },
+    handleClick: function() {
+        this.setState({bar: 'foo'});
+    },
     render: function() {
         return (
             <div className='jumbotron'>

@@ -28,10 +28,12 @@ $about-btn-color: #f4511e;
   -webkit-transition: background-color .4s, color .4s;
 }
 
+.view:focus {
+  outline: 0 !important;
+}
 .view:hover {
   background-color: $view-btn-color;
   color: white;
-
 }
 .about {
   background-color: white;
@@ -40,7 +42,13 @@ $about-btn-color: #f4511e;
   border-radius: 50px;
   transition: background-color .4s, color .4s;
   -webkit-transition: background-color .4s, color .4s;
+  outline: none;
 }
+
+.about:focus {
+  outline: 0 !important;
+}
+
 .about:hover {
   background-color: $about-btn-color;
   color: white;
