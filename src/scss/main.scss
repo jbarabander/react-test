@@ -1,1 +1,12 @@
 @import 'button.scss';
+
+@font-face {
+  font-family: 'Moon-light';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/Moon Light.otf');
+}
+
+body{
+  font-family: 'Moon-light';
+}
