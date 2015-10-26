@@ -9,6 +9,7 @@ var streamify = require('streamify');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var notify = require('gulp-notify');
+var runSeq = require('run-sequence')
 
 var path = {
     HTML: 'src/views/index.html',
@@ -17,7 +18,9 @@ var path = {
     DEST: 'dist',
     DEST_BUILD: 'dist/build',
     DEST_SRC: 'dist/src',
-    ENTRY_POINT: './src/js/App.js'
+    ENTRY_POINT: './src/js/App.js',
+    FONTS: './src/fonts',
+    FONT_DEST: './dist/fonts'
 };
 
 gulp.task('copy', function() {
@@ -42,6 +45,8 @@ gulp.task('watch', function() {
     .bundle()
     .pipe(source(path.OUT))
     .pipe(gulp.dest(path.DEST_SRC));
+
+
 });
 
 gulp.task('buildJS', function() {
@@ -71,7 +76,35 @@ gulp.task('replaceHTML', function() {
         }))
     .pipe(gulp.dest(path.DEST));
 });
-gulp.task('production', ['replaceHTML', 'buildJS', 'buildCSS']);
+gulp.task('buildFonts', function() {
+    gulp.src(path.FONTS)
+    .pipe(gulp.dest(path.DEST));
+    gulp.src('./src/fonts/*.otf')
+    .pipe(gulp.dest(path.FONT_DEST));
+})
 
-gulp.task('default', ['watch']);
+gulp.task('production', ['replaceHTML', 'buildJS', 'buildCSS', 'buildFonts']);
+
+gulp.task('default',function() {
+    gulp.watch('./src/scss/**/*.scss', function() {
+        runSeq('buildCSS');
+    });
+    gulp.watch(path.HTML, ['copy']);
+    var watcher = watchify(browserify({
+        entries: [path.ENTRY_POINT],
+        transform: [reactify],
+        debug: true,
+        cache: {}, packageCache: {}, fullPaths: true,
+    }));
+    return watcher.on('update', function() {
+        watcher.bundle()
+            .pipe(source(path.OUT))
+            .pipe(gulp.dest(path.DEST_SRC))
+        console.log('Updated');
+    })
+        .bundle()
+        .pipe(source(path.OUT))
+        .pipe(gulp.dest(path.DEST_SRC));
+
+});
 
