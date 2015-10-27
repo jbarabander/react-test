@@ -1,6 +1,5 @@
 var EventEmitter = require('events').EventEmitter;
 var AppDispatcher = require('../dispatchers/AppDispatcher');
-var request = require('superagent');
 var userConstants = require('../constants/userConstants.js');
 var _ = require('lodash');
 
@@ -21,28 +20,26 @@ function update(id, obj) {
     _users[id] = _.merge(_users[id], obj);
 }
 
-function UserStore() {}
 
-UserStore.prototype = Object.create(EventEmitter.prototype);
-UserStore.prototype.constructor = UserStore;
+var UserStore = Object.create(EventEmitter.prototype);
 
-UserStore.prototype.getAll = function() {
+UserStore.getAll = function() {
     return _users;
 };
 
-UserStore.prototype.emitChange = function() {
+UserStore.emitChange = function() {
     this.emit(CHANGE_EVENT);
 };
 
-UserStore.prototype.addChangeListener = function(callback) {
+UserStore.addChangeListener = function(callback) {
     this.on(CHANGE_EVENT, callback);
 };
 
-UserStore.prototype.removeChangeListener = function(callback) {
+UserStore.removeChangeListener = function(callback) {
     this.removeListener(CHANGE_EVENT, callback);
 };
 
-UserStore.prototype.dispatcherIndex = AppDispatcher.register(function(payload) {
+UserStore.dispatcherIndex = AppDispatcher.register(function(payload) {
     var action = payload.action;
     var text;
 
