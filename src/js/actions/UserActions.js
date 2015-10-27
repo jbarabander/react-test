@@ -16,6 +16,14 @@ function destroy(id) {
     })
 }
 
+function update(id, content) {
+    AppDispatcher.handleViewAction({
+        actionType: userConstants.USER_UPDATE,
+        id: id,
+        content: content
+    })
+}
+
 module.exports = {
     create: create,
     destroy: destroy
