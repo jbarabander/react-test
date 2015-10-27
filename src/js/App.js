@@ -3,7 +3,6 @@
 var React = require('react');
 var ReactDom = require('react-dom');
 var StartScreen = require('./components/StartScreen.js');
-require('./dispatchers');
 var attachFastClick = require('fastclick');
 attachFastClick(document.body);
 window.React = React;

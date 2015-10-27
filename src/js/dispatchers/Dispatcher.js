@@ -11,7 +11,7 @@ function Dispatcher() {
 Dispatcher.prototype.register = function(cb) {
         _callbacks.push(cb);
         return _callbacks.length - 1;
-}
+};
 
 Dispatcher.prototype.dispatch = function(payload) {
         var resolves = [];
