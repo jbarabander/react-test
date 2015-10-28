@@ -1,7 +1,7 @@
-Promise = require('bluebird');
+var Promise = require('bluebird');
 
-_callbacks = [];
-_promises = [];
+var _callbacks = [];
+var _promises = [];
 
 
 //Dispatcher//
@@ -17,13 +17,13 @@ Dispatcher.prototype.dispatch = function(payload) {
         var resolves = [];
         var rejects = [];
         _promises = _callbacks.map(function(_, i) {
-            new Promise((resolve, reject) => {
+            return new Promise(function(resolve, reject) {
                 resolves[i] = resolve;
                 rejects[i] = reject;
             });
         });
         _callbacks.forEach(function(cb, i) {
-            Promise.resolve(cb).then(function() {
+            Promise.resolve(cb(payload)).then(function() {
                 resolves[i](payload);
             }, function() {
                 rejects[i](new Error('Dispatcher callback unsuccessful'));
@@ -31,7 +31,6 @@ Dispatcher.prototype.dispatch = function(payload) {
         });
         _promises = [];
 };
-
 module.exports = Dispatcher;
 
 

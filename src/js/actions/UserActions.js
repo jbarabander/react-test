@@ -3,6 +3,7 @@ var userConstants = require('../constants/userConstants.js');
 var request = require('superagent');
 
 function create(content) {
+    console.log(content);
     AppDispatcher.handleViewAction({
         actionType: userConstants.USER_CREATE,
         content: content

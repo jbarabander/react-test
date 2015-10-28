@@ -49,18 +49,18 @@ UserStore.dispatcherIndex = AppDispatcher.register(function(payload) {
             content = action.content;
             if (Object.keys(content).length !== 0) {
                 create(content);
-                this.emitChange();
+                UserStore.emitChange();
             }
             break;
 
         case userConstants.USER_DESTROY:
             destroy(action.id);
-            this.emitChange();
+            UserStore.emitChange();
             break;
 
         case userConstants.USER_UPDATE:
             update(action.id, action.content);
-            this.emitChange();
+            UserStore.emitChange();
             break;
 
         // add more cases for other actionTypes, like TODO_UPDATE, etc.

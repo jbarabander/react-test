@@ -15,6 +15,7 @@ var Main = React.createClass({
         //    name: {first: 'Justin', last: 'Barabander'},
         //    passage: 'Welcome to my Site'
         //}
+
         return {
             name: {first: 'Justin', last: 'Barabander'},
             passage: 'Welcome to my site',
@@ -36,6 +37,7 @@ var Main = React.createClass({
         )
     },
     _onChange: function() {
+        console.log(getUserState());
         this.setState(getUserState());
     }
 });
