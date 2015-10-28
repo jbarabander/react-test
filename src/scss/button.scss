@@ -1,0 +1,55 @@
+$view-btn-color: #039be5;
+$about-btn-color: #f4511e;
+
+//@mixin animateButton($starting-button-color, $button-color, $animation-name) {
+//  @keyframes #{$animation-name} {
+//    from {
+//      background-color: $starting-button-color;
+//      color: $button-color;
+//    }
+//    to {
+//      background-color: $button-color;
+//      color: $starting-button-color;
+//    }
+//  }
+//}
+//
+//@include animateButton(white, $view-btn-color, 'hover-on-view-button');
+//@include animateButton(white, $about-btn-color, 'hover-on-about-button');
+//@include animateButton($view-btn-color, white, 'hover-off-view-button');
+//@include animateButton($about-btn-color, white, 'hover-off-about-button');
+
+.view {
+  background-color: white;
+  color: $view-btn-color;
+  border: 1.5px solid $view-btn-color;
+  border-radius: 50px;
+  transition: background-color .4s, color .4s;
+  -webkit-transition: background-color .4s, color .4s;
+}
+
+.view:focus {
+  outline: 0 !important;
+}
+.view:hover {
+  background-color: $view-btn-color;
+  color: white;
+}
+.about {
+  background-color: white;
+  color: $about-btn-color;
+  border: 1.5px solid $about-btn-color;
+  border-radius: 50px;
+  transition: background-color .4s, color .4s;
+  -webkit-transition: background-color .4s, color .4s;
+  outline: none;
+}
+
+.about:focus {
+  outline: 0 !important;
+}
+
+.about:hover {
+  background-color: $about-btn-color;
+  color: white;
+}
