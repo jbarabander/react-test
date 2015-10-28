@@ -8,7 +8,7 @@ var User = mongoose.model('User');
 var cookieParser = require('cookie-parser');
 
 router.use(session({
-    secret: require('../env/index.js').SESSION_SECRET, //FIXME move to secrets file later
+    secret: require('../env/index.js').SESSION_SECRET,
     resave: false,
     saveUninitialized: false
 }));
