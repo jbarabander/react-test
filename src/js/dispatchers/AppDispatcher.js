@@ -9,5 +9,4 @@ AppDispatcher.handleViewAction = function(action) {
     });
 };
 
-
 module.exports = AppDispatcher;

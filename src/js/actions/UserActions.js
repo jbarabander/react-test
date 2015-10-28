@@ -26,5 +26,6 @@ function update(id, content) {
 
 module.exports = {
     create: create,
-    destroy: destroy
+    destroy: destroy,
+    update: update
 }

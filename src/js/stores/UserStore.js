@@ -10,6 +10,7 @@ function create(content) {
     //request.post('/api/post')
     //.send(obj)
     _users[Date.now()] = content;
+    console.log(_users);
 }
 
 function destroy(id) {
@@ -40,8 +41,8 @@ UserStore.removeChangeListener = function(callback) {
 };
 
 UserStore.dispatcherIndex = AppDispatcher.register(function(payload) {
+    console.log('in dispatcher');
     var action = payload.action;
-    var text;
 
     switch(action.actionType) {
         case userConstants.USER_CREATE:

@@ -1,6 +1,7 @@
 var React = require('react');
 var StartScreen = require('./StartScreen.js');
 var UserStore = require('../stores/UserStore.js');
+var SignUp = require('./SignUp.js');
 
 function getUserState() {
     return {
@@ -30,6 +31,7 @@ var Main = React.createClass({
         return (
             <div>
                 <StartScreen name={this.state.name} passage={this.state.passage}/>
+                <SignUp/>
             </div>
         )
     },
