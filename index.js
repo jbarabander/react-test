@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+require('./server/db/models/index.js')
 var app = express();
 
 app.use(express.static('dist'));

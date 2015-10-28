@@ -32,7 +32,6 @@ var Main = React.createClass({
         return (
             <div>
                 <StartScreen name={this.state.name} passage={this.state.passage}/>
-                <SignUp/>
             </div>
         )
     },
