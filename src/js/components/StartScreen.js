@@ -6,7 +6,6 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div className='text-center splash-page'>
-                <Navbar name={this.props.name.first}/>
                 <Jumbo passage={this.props.passage} title='Intermeetiate' addedClass='front'/>
             </div>
         )

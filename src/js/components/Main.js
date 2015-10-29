@@ -2,9 +2,7 @@ var React = require('react');
 var StartScreen = require('./StartScreen.js');
 var UserStore = require('../stores/UserStore.js');
 var SignUp = require('./SignUp.js');
-var Router = require('react-router').Router;
-var Route = require('react-router').Route;
-var Link = require('react-router').Link;
+var Navbar = require('./Navbar.js');
 
 function getUserState() {
     return {
@@ -12,6 +10,7 @@ function getUserState() {
     };
 }
 
+//<StartScreen name={this.state.name} passage={this.state.passage}/>
 var App = React.createClass({
     getInitialState: function() {
         //return {
@@ -34,7 +33,8 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
-                <StartScreen name={this.state.name} passage={this.state.passage}/>
+                <Navbar name={this.state.name.first}></Navbar>
+                {this.props.children}
             </div>
         )
     },
