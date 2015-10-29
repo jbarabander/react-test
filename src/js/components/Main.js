@@ -2,6 +2,9 @@ var React = require('react');
 var StartScreen = require('./StartScreen.js');
 var UserStore = require('../stores/UserStore.js');
 var SignUp = require('./SignUp.js');
+var Router = require('react-router').Router;
+var Route = require('react-router').Route;
+var Link = require('react-router').Link;
 
 function getUserState() {
     return {
@@ -9,7 +12,7 @@ function getUserState() {
     };
 }
 
-var Main = React.createClass({
+var App = React.createClass({
     getInitialState: function() {
         //return {
         //    name: {first: 'Justin', last: 'Barabander'},
@@ -18,7 +21,7 @@ var Main = React.createClass({
 
         return {
             name: {first: 'Justin', last: 'Barabander'},
-            passage: 'Welcome to my site',
+            passage: 'Meet me in the middle!',
             allUsers: getUserState().allUsers
         }
     },
@@ -30,7 +33,7 @@ var Main = React.createClass({
     },
     render: function() {
         return (
-            <div className='splashPage'>
+            <div>
                 <StartScreen name={this.state.name} passage={this.state.passage}/>
             </div>
         )
@@ -41,4 +44,4 @@ var Main = React.createClass({
     }
 });
 
-module.exports = Main;
+module.exports = App;

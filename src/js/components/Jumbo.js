@@ -20,12 +20,12 @@ module.exports = React.createClass({
         return (
             <div>
                 <div className={this.state.show ? revealedClass:'hidden'}>
-                    <h1>Test Jumbotron</h1>
+                    <h1>{this.props.title}</h1>
                     <h3>{this.props.passage}</h3>
                     <button className='btn btn-info view' onClick={this.handleClick}>View My Profile</button> <button className='btn btn-danger about'>About</button>
                 </div>
                 <button className={this.state.show ? 'hidden': 'btn btn-info view'} onClick={this.handleClick}>Hide Profile</button>
             </div>
         )
-    },
+    }
 });
