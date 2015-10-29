@@ -21,7 +21,9 @@ var path = {
     DEST_SRC: 'dist/src',
     ENTRY_POINT: './src/js/App.js',
     FONTS: './src/fonts',
-    FONT_DEST: './dist/fonts'
+    FONT_DEST: './dist/fonts',
+    IMAGES: './src/images',
+    IMAGES_DEST: './dist/images'
 };
 
 gulp.task('copy', function () {
@@ -84,7 +86,14 @@ gulp.task('buildFonts', function () {
         .pipe(gulp.dest(path.FONT_DEST));
 })
 
-gulp.task('production', ['replaceHTML', 'buildJS', 'buildCSS', 'buildFonts']);
+gulp.task('buildImages', function() {
+    gulp.src(path.IMAGES)
+    .pipe(gulp.dest(path.DEST));
+    gulp.src('./src/images/*.jpg')
+    .pipe(gulp.dest(path.IMAGES_DEST));
+})
+
+gulp.task('production', ['replaceHTML', 'buildJS', 'buildCSS', 'buildFonts', 'buildImages']);
 
 gulp.task('default', function () {
     gulp.watch('./src/scss/**/*.scss', function () {

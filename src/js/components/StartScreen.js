@@ -7,7 +7,7 @@ module.exports = React.createClass({
         return (
             <div className='text-center'>
                 <Navbar name={this.props.name.first}/>
-                <Jumbo passage={this.props.passage}/>
+                <Jumbo passage={this.props.passage} addedClass='front'/>
             </div>
         )
     }
