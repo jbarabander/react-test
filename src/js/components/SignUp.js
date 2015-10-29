@@ -21,12 +21,12 @@ module.exports = React.createClass({
         var values = this.state;
         var self = this;
         return (
-            <div>
+            <div className='form form-group'>
                 {Object.keys(values).map(function(element, index) {
                     return (
                         <div key={index}>
                             <label>{values[element].name}</label>
-                            <input type={values[element].type} value={values[element].value}
+                            <input className='form from-control' type={values[element].type} value={values[element].value}
                                    onChange={self.handleChange.bind(self, element, values[element])}/>
                         </div>
                     )

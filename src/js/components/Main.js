@@ -2,6 +2,7 @@ var React = require('react');
 var StartScreen = require('./StartScreen.js');
 var UserStore = require('../stores/UserStore.js');
 var SignUp = require('./SignUp.js');
+var Navbar = require('./Navbar.js');
 
 function getUserState() {
     return {
@@ -9,7 +10,8 @@ function getUserState() {
     };
 }
 
-var Main = React.createClass({
+//<StartScreen name={this.state.name} passage={this.state.passage}/>
+var App = React.createClass({
     getInitialState: function() {
         //return {
         //    name: {first: 'Justin', last: 'Barabander'},
@@ -18,7 +20,7 @@ var Main = React.createClass({
 
         return {
             name: {first: 'Justin', last: 'Barabander'},
-            passage: 'Welcome to my site',
+            passage: 'Meet me in the middle!',
             allUsers: getUserState().allUsers
         }
     },
@@ -30,8 +32,9 @@ var Main = React.createClass({
     },
     render: function() {
         return (
-            <div className='splashPage'>
-                <StartScreen name={this.state.name} passage={this.state.passage}/>
+            <div>
+                <Navbar name={this.state.name.first}></Navbar>
+                {this.props.children}
             </div>
         )
     },
@@ -41,4 +44,4 @@ var Main = React.createClass({
     }
 });
 
-module.exports = Main;
+module.exports = App;

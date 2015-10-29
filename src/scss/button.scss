@@ -1,4 +1,4 @@
-$view-btn-color: #039be5;
+$view-btn-color: #0d47a1;
 $about-btn-color: #f4511e;
 
 //@mixin animateButton($starting-button-color, $button-color, $animation-name) {
@@ -33,6 +33,7 @@ $about-btn-color: #f4511e;
 }
 .view:hover {
   background-color: $view-btn-color;
+  border: 1.5px solid $view-btn-color;
   color: white;
 }
 .about {
@@ -51,5 +52,6 @@ $about-btn-color: #f4511e;
 
 .about:hover {
   background-color: $about-btn-color;
+  border: 1.5px solid $about-btn-color;
   color: white;
 }
