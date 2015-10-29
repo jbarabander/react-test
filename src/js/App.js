@@ -11,13 +11,14 @@ var SignUp = require('./components/SignUp.js');
 //var Link = require('react-router').Link;
 var attachFastClick = require('fastclick');
 attachFastClick(document.body);
+var createBrowserHistory = require('history/lib/createBrowserHistory');
 window.React = React;
 
 console.log(IndexRoute);
 
 
 ReactDom.render((
-    <Router>
+    <Router history={createBrowserHistory()}>
         <Route path='/' component={App}>
             <IndexRoute component={StartScreen}/>
             <Route path='signup' component={SignUp}/>

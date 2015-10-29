@@ -8,7 +8,7 @@ module.exports = React.createClass({
             email: {name:'email', type: 'email', value: ''},
             password: {name:'password', type: 'password', value: ''},
             repeatedPassword: {name:'repeated password', type: 'password', value: ''},
-            username: {name:'username', type: 'text', value: 'username'}
+            username: {name:'username', type: 'text', value: ''}
         };
     },
     handleChange: function(type, element, event) {
@@ -26,7 +26,7 @@ module.exports = React.createClass({
                     return (
                         <div key={index}>
                             <label>{values[element].name}</label>
-                            <input className='form from-control' type={values[element].type} value={values[element].value}
+                            <input className='form-control' type={values[element].type} value={values[element].value}
                                    onChange={self.handleChange.bind(self, element, values[element])}/>
                         </div>
                     )
