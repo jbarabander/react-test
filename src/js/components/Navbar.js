@@ -1,6 +1,7 @@
 var React = require('react');
+var Link = require('react-router').Link;
 //var data = [{name: 'hello', key: keyGen(8)}, {name: 'boo', key: keyGen(8)}, {name: 'blah', key: keyGen(8)}];
-var data = ['hello', 'boo', 'blah']
+var data = ['hello', 'boo', 'blah'];
 
 module.exports = React.createClass({
     render: function () {
@@ -8,7 +9,7 @@ module.exports = React.createClass({
             <div>
                 <div className='navbar navbar-inverse'>
                     <div className='container-fluid'>
-                        <a className='navbar-brand' href="#">Welcome {this.props.name}</a>
+                        <Link to='/'><a className='navbar-brand' href='#'>Welcome {this.props.name}</a></Link>
                         <div className='navbar-right'>
                             <ul className='nav navbar-nav'>
                                 {data.map((element, index) => {
