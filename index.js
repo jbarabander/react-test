@@ -1,17 +1,27 @@
-var express = require('express');
-var path = require('path');
-var app = express();
+'use strict';
+var chalk = require('chalk');
 
-app.use(express.static('dist'));
-app.use(express.static('node_modules'));
+// Requires in ./db/index.js -- which returns a promise that represents
+// mongoose establishing a connection to a MongoDB database.
+var startDb = require('./server/db');
 
-app.get('/', function(req, res, next) {
-    res.sendFile(path.join(__dirname, 'dist/src/index.html'));
-})
+// Create a node server instance! cOoL!
+var server = require('http').createServer();
 
+var createApplication = function () {
+    var app = require('./server/app');
+    server.on('request', app); // Attach the Express application.
+};
 
-var server = app.listen(3000, function() {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log('app listening on port 3000');
-})
+var startServer = function () {
+    var PORT = process.env.PORT || 1337;
+    server.listen(PORT, function () {
+        console.log(chalk.blue('Server started on port', chalk.magenta(PORT)));
+    });
+
+};
+
+startDb.then(createApplication).then(startServer).catch(function (err) {
+    console.error(chalk.red(err.stack));
+    process.kill(1);
+});

@@ -30,9 +30,8 @@ var Main = React.createClass({
     },
     render: function() {
         return (
-            <div>
+            <div className='splashPage'>
                 <StartScreen name={this.state.name} passage={this.state.passage}/>
-                <SignUp/>
             </div>
         )
     },

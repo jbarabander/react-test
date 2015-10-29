@@ -15,9 +15,11 @@ module.exports = React.createClass({
 
     },
     render: function() {
+        var revealedClass = 'jumbotron ' + this.props.addedClass;
+        console.log(revealedClass);
         return (
             <div>
-                <div className={this.state.show ? 'jumbotron':'jumbotron hidden'}>
+                <div className={this.state.show ? revealedClass:'hidden'}>
                     <h1>Test Jumbotron</h1>
                     <h3>{this.props.passage}</h3>
                     <button className='btn btn-info view' onClick={this.handleClick}>View My Profile</button> <button className='btn btn-danger about'>About</button>
