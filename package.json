@@ -28,6 +28,7 @@
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "mongoose": "^4.2.2",
+    "nodemailer": "^1.8.0",
     "object-assign": "^4.0.1",
     "passport": "^0.3.0",
     "passport-facebook": "^2.0.0",

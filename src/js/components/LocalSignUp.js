@@ -1,5 +1,6 @@
 var React = require('react');
 var UserActions = require('../actions/UserActions.js');
+var History = require('react-router').History;
 
 var formElements = [
     {stateName: 'firstName', name: 'first name', type: 'text', formClass: 'half-form-el'},
@@ -11,6 +12,7 @@ var formElements = [
 ];
 
 module.exports = React.createClass({
+    mixins: [History],
     getInitialState: function() {
         return {
             firstName: '',
@@ -27,9 +29,12 @@ module.exports = React.createClass({
         this.setState(state);
     },
     submitUser: function() {
+        var self = this;
         if(this.state.password === this.state.repeatedPassword && this.state.password !== '') {
             console.log('hi');
-            UserActions.create(this.state);
+            UserActions.create(this.state, function() {
+                self.history.pushState(null,'/')
+            });
         }
     },
     render: function() {

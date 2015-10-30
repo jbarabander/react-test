@@ -1,17 +1,18 @@
 var AppDispatcher = require('../dispatchers/AppDispatcher.js');
 var userConstants = require('../constants/userConstants.js');
 var request = require('superagent');
+var Router = require('react-router');
 
-function create(content) {
+function create(content, cb) {
     delete content.repeatedPassword;
     request.post('api/users')
     .send(content)
     .end(function(err, res) {
-            console.log(res);
             AppDispatcher.handleViewAction({
                 actionType: userConstants.USER_CREATE,
-                content: content
-            })
+                content: res
+            });
+            cb();
         });
 }
 

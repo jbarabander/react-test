@@ -6,7 +6,8 @@ var bcrypt = Promise.promisifyAll(require('bcrypt'));
 var schema = mongoose.Schema({
     username: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
     firstName: String,
     lastName: String,
