@@ -14,8 +14,6 @@ attachFastClick(document.body);
 var createBrowserHistory = require('history/lib/createBrowserHistory');
 window.React = React;
 
-console.log(IndexRoute);
-
 
 ReactDom.render((
     <Router history={createBrowserHistory()}>

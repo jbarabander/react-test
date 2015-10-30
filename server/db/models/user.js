@@ -4,6 +4,10 @@ var Promise = require('bluebird');
 var bcrypt = Promise.promisifyAll(require('bcrypt'));
 
 var schema = mongoose.Schema({
+    username: {
+        type: String,
+        unique: true
+    },
     firstName: String,
     lastName: String,
     isAdmin: {
@@ -43,7 +47,7 @@ schema.methods.hash = function(pass, cb) {
         if(err) return cb(err);
         bcrypt.hash(pass, salt, function(err, hash) {
             if(err) return cb(err);
-            self.passwordHash = hash;
+            self.password = hash;
             return cb();
         });
     });
@@ -69,6 +73,7 @@ schema.methods.authenticatePromise = function(pass) {
 };
 
 schema.pre('save', function(next) {
+    console.log('in pre save');
     if(!this.isNew) return next();
     this.hash(this.password, next);
 });
