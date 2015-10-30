@@ -48,7 +48,7 @@ module.exports = React.createClass({
                             </div>
                         )
                     })}
-                    <button className='btn btn-info view submit-btn' onClick={this.submitUser}>Submit</button>
+                    <button type='button' className='btn btn-info view submit-btn' onClick={this.submitUser}>Submit</button>
                 </form>
             </div>
         )
