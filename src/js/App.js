@@ -13,7 +13,9 @@ var attachFastClick = require('fastclick');
 attachFastClick(document.body);
 var createBrowserHistory = require('history/lib/createBrowserHistory');
 window.React = React;
+var RouterContainer = require('./containers/RouterContainer.js');
 
+RouterContainer.set(Router);
 
 ReactDom.render((
     <Router history={createBrowserHistory()}>
