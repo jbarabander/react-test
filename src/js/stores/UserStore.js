@@ -4,7 +4,7 @@ var userConstants = require('../constants/userConstants.js');
 var _ = require('lodash');
 
 var _users = {};
-var CHANGE_EVENT = 'change';
+var CHANGE_EVENT = 'userChange';
 
 function create(content) {
     //request.post('/api/post')
@@ -41,7 +41,6 @@ UserStore.removeChangeListener = function(callback) {
 };
 
 UserStore.dispatcherIndex = AppDispatcher.register(function(payload) {
-    console.log('in dispatcher');
     var action = payload.action;
 
     switch(action.actionType) {

@@ -39,7 +39,6 @@ var App = React.createClass({
         )
     },
     _onChange: function() {
-        console.log(getUserState());
         this.setState(getUserState());
     }
 });

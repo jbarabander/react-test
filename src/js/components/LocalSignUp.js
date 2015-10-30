@@ -28,7 +28,8 @@ module.exports = React.createClass({
         state[type] = event.target.value;
         this.setState(state);
     },
-    submitUser: function() {
+    submitUser: function(event) {
+        event.preventDefault();
         var self = this;
         if(this.state.password === this.state.repeatedPassword && this.state.password !== '') {
             console.log('hi');
@@ -43,7 +44,7 @@ module.exports = React.createClass({
         return (
             <div className='local-signup-group'>
                 <h3>Create an Account</h3>
-                <form className='form-group'>
+                <form className='form-group' onSubmit={this.submitUser}>
                     {formElements.map(function(element, index) {
                         return (
                             <div key={index} className={element.formClass}>
@@ -53,7 +54,7 @@ module.exports = React.createClass({
                             </div>
                         )
                     })}
-                    <button type='button' className='btn btn-info view submit-btn' onClick={this.submitUser}>Submit</button>
+                    <button type='submit' className='btn btn-info view submit-btn'>Submit</button>
                 </form>
             </div>
         )
