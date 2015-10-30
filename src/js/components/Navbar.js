@@ -9,7 +9,7 @@ module.exports = React.createClass({
             <div>
                 <div className='navbar navbar-inverse'>
                     <div className='container-fluid'>
-                        <Link to='/'><a className='navbar-brand' href='#'>Welcome {this.props.name}</a></Link>
+                        <Link to='/' className='navbar-brand'>Welcome {this.props.name}</Link>
                         <div className='navbar-right'>
                             <ul className='nav navbar-nav'>
                                 {data.map((element, index) => {

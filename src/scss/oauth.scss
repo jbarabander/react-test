@@ -1,0 +1,51 @@
+.oauth-group {
+  width: 35%;
+  position: relative;
+}
+
+.fa-l {
+  font-size: 10em;
+  padding: 20px 15px;
+}
+
+.icon-container {
+  margin-left: 20px;
+  position: absolute;
+  border-left: 1px solid lightgrey;
+}
+.oauth-title {
+  margin-left: 20px;
+}
+
+.icon-link {
+  text-decoration: none !important;
+}
+
+@media(max-width: 992px) {
+  .oauth-group {
+    position: static;
+    width: 100%;
+  }
+  .icon-container {
+    border-left: 0;
+    margin-left: 0;
+    position: static;
+  }
+  .oauth-title {
+    margin-left: 0;
+  }
+}
+
+@media(max-width: 767px) {
+  .fa-l {
+    display: block;
+    text-align: center;
+    font-size: 14em;
+  }
+}
+
+@media(max-width: 525px) {
+  .fa-l {
+    font-size: 8em;
+  }
+}

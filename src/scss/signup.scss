@@ -1,0 +1,26 @@
+.signup-container {
+  padding: 50px 50px 0px 50px;
+  border: 1px solid #0d47a1;
+  border-radius: 3px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+@media(max-width: 992px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+@media(max-width: 767px) {
+  .signup-container {
+    padding: 20px 20px 0px 20px;
+  }
+}
+
+
+
+
+

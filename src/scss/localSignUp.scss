@@ -1,0 +1,13 @@
+.local-signup-group {
+  width: 65%;
+}
+
+.submit-btn {
+  margin-top: 10px;
+}
+
+@media(max-width: 992px) {
+  .local-signup-group {
+    width: 100%;
+  }
+}
