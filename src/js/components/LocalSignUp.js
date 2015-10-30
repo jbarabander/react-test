@@ -6,7 +6,7 @@ var formElements = [
     {stateName: 'lastName', name: 'last name', type: 'text', formClass: 'half-form-el'},
     {stateName: 'email', name:'email', type: 'email', formClass: 'full-form-el'},
     {stateName: 'password', name:'password', type: 'password', formClass: 'half-form-el'},
-    {stateName: 'repeatedPassword', name: 'repeated password', type: 'password', formClass: 'half-form-el'},
+    {stateName: 'repeatedPassword', name: 'repeat password', type: 'password', formClass: 'half-form-el'},
     {stateName: 'username', name: 'username', type: 'text', formClass: 'full-form-el'}
 ];
 
@@ -27,7 +27,7 @@ module.exports = React.createClass({
         this.setState(state);
     },
     submitUser: function() {
-        if(this.state.password === this.state.repeatedPassword) {
+        if(this.state.password === this.state.repeatedPassword && this.state.password !== '') {
             console.log('hi');
             UserActions.create(this.state);
         }
