@@ -1,9 +1,10 @@
 var AppDispatcher = require('../dispatchers/AppDispatcher.js');
 var userConstants = require('../constants/userConstants.js');
-var authConstants = erquire('../constants/authConstants.js'); //FIXME
+var authConstants = require('../constants/authConstants.js'); //FIXME
+var RouterContainer = require('../containers/RouterContainer.js');
 var request = require('superagent');
 
-function create(content, cb) {
+function create(content) {
     delete content.repeatedPassword;
     request.post('api/users')
     .send(content)
@@ -13,7 +14,7 @@ function create(content, cb) {
                 actionType: userConstants.USER_CREATE,
                 content: res
             });
-            cb();
+            RouterContainer.get().history.pushState(null, '/');
         });
 }
 
