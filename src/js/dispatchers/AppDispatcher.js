@@ -8,5 +8,11 @@ AppDispatcher.handleViewAction = function(action) {
         action: action
     });
 };
+//AppDispatcher.handleRouteAction = function(action) {
+//    this.dispatch({
+//        source: 'ROUTE_ACTION',
+//        action: action
+//    })
+//}
 
 module.exports = AppDispatcher;

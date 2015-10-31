@@ -1,18 +1,20 @@
 var AppDispatcher = require('../dispatchers/AppDispatcher.js');
 var userConstants = require('../constants/userConstants.js');
+var authConstants = require('../constants/authConstants.js'); //FIXME
+var RouterContainer = require('../containers/RouterContainer.js');
 var request = require('superagent');
-var Router = require('react-router');
 
-function create(content, cb) {
+function create(content) {
     delete content.repeatedPassword;
     request.post('api/users')
     .send(content)
     .end(function(err, res) {
+            if(err) throw new Error(err.message);
             AppDispatcher.handleViewAction({
                 actionType: userConstants.USER_CREATE,
                 content: res
             });
-            cb();
+            RouterContainer.get().history.pushState(null, '/');
         });
 }
 
