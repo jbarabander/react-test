@@ -7,26 +7,29 @@ var React = require('react');
 module.exports = React.createClass({
     render: function() {
         return (
-            <div className='login-container'>
-                <div className='local-login'>
-                    <div className='oauth-buttons row'>
-                        <h4>Login through:</h4>
-                        <div className='col-sm-3 col-xs-6'><a href='#'><i className='fa fa-facebook auth-icon'></i></a></div>
-                        <div className='col-sm-3 col-xs-6'><a href='#'><i className='fa fa-twitter auth-icon'></i></a></div>
-                        <div className='col-sm-3 col-xs-6'><a href='#'><i className='fa fa-google-plus auth-icon'></i></a></div>
-                        <div className='col-sm-3 col-xs-6'><a href='#'><i className='fa fa-github auth-icon'></i></a></div>
+            <div className='container'>
+                <div className='login-container'>
+                    <div className='local-login'>
+                        <div className='oauth-buttons row'>
+                            <h4>Login through:</h4>
+                            <div className='col-sm-3 col-xs-6'><a href='#' className='icon-link'><i className='fa fa-facebook auth-icon'></i></a></div>
+                            <div className='col-sm-3 col-xs-6'><a href='#' className='icon-link'><i className='fa fa-twitter auth-icon'></i></a></div>
+                            <div className='col-sm-3 col-xs-6'><a href='#' className='icon-link'><i className='fa fa-google-plus auth-icon'></i></a></div>
+                            <div className='col-sm-3 col-xs-6'><a href='#' className='icon-link'><i className='fa fa-github auth-icon'></i></a></div>
+                        </div>
+                        <div>
+                            <form className="form form-group">
+                                <label>Email or Username</label>
+                                <input type="text" className='form-control'/>
+                                <label>Password</label>
+                                <input type="password" className='form-control'/>
+                                <button className='btn btn-info view submit-btn'>Submit</button>
+                            </form>
+                        </div>
                     </div>
-                    <div>
-                        <form action="form form-group">
-                            <label>Email or Username</label>
-                            <input type="text" className='form-control'/>
-                            <label>Password</label>
-                            <input type="password" className='form-control'/>
-                        </form>
-                    </div>
-
                 </div>
             </div>
+
         )
     }
 });
