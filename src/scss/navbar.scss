@@ -1,7 +1,7 @@
-$login-btn-hover-color: #ce93d8;
+$login-btn-hover-color: #039be5;
 
 #inter-navbar {
-  background: #1565c0;
+  background: #37474f;
   border: 0px;
   border-radius: 0px;
   //padding-top: 6px;
@@ -16,17 +16,33 @@ $login-btn-hover-color: #ce93d8;
 
 .navbar-nav {
   & > li > a {
+    display: inline-block;
+    position: relative;
     color: white !important;
     border-right: 1px solid white;
     border-left: 1px solid white;
     transition: background-color .4s, color .4s, border .4s;
     -webkit-transition: background-color .4s, color .4s, border .4s;
-
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: transparent;
+      transition: width .5s ease, background-color .5s ease;
+    }
     &:hover {
       background-color: $login-btn-hover-color !important;
-      color: #1565c0 !important;
+      //color: #1565c0 !important;
       border-right: 1px solid $login-btn-hover-color;
       border-left: 1px solid $login-btn-hover-color;
+      &:after {
+        width: 100%;
+        background: blue;
+      }
     }
     &:focus {
       outline: 0 !important;
@@ -38,5 +54,8 @@ $login-btn-hover-color: #ce93d8;
   background-color: $login-btn-hover-color !important;
   border-right: 1px solid $login-btn-hover-color !important;
   border-left: 1px solid $login-btn-hover-color !important;
-  color: #1565c0 !important;
+  &:after {
+    width: 100%;
+    background: blue;
+  }
 }
