@@ -16,6 +16,19 @@ function login(content) {
         })
 }
 
+function getSession() {
+    request.get('/session')
+    .end(function(err, res) {
+            if(err) throw new Error(err.message);
+            var resObj = JSON.parse(res.text);
+            AppDispatcher.handleViewAction({
+                actionType: authConstants.LOGIN_SUCCESS,
+                content: resObj.user
+            })
+        })
+}
+
 module.exports = {
-    login: login
+    login: login,
+    getSession: getSession
 }
