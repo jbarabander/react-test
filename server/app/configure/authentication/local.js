@@ -8,14 +8,12 @@ var User = mongoose.model('User');
 module.exports = function (app) {
     // A POST /login route is created to handle login.
     app.post('/login', function (req, res, next) {
-        console.log('in the login route');
         var emailOrUsername = req.body.usernameOrEmail;
         var password = req.body.password;
         var query = User.findOne({$or: [{email: emailOrUsername}, {username: emailOrUsername}]})
             .select('+password');
         query.exec(function(err, user) {
             if(err) return next(err);
-            console.log(user);
             user.authenticate(password, function(err, result) {
                 if(err) return next(err);
                 if(result) return req.login(user, function() {
