@@ -1,6 +1,6 @@
 $view-btn-color: #0d47a1;
 $about-btn-color: #f4511e;
-
+$login-btn-hover-color: #ce93d8;
 //@mixin animateButton($starting-button-color, $button-color, $animation-name) {
 //  @keyframes #{$animation-name} {
 //    from {
@@ -43,7 +43,6 @@ $about-btn-color: #f4511e;
   border-radius: 50px;
   transition: background-color .4s, color .4s;
   -webkit-transition: background-color .4s, color .4s;
-  outline: none;
 }
 
 .about:focus {
@@ -59,5 +58,21 @@ $about-btn-color: #f4511e;
 
 .big-button {
   font-size: 18px;
+}
 
+.login-btn {
+  background-color: transparent;
+  border: 1.5px solid white;
+  border-radius: 50px;
+  transition: background-color .4s, color .4s, border .4s;
+  -webkit-transition: background-color .4s, color .4s, border .4s;
+
+  &:hover {
+    background-color: $login-btn-hover-color;
+    border: 1.5px solid $login-btn-hover-color;
+    color: #1565c0;
+  }
+  &:focus {
+    outline: 0 !important;
+  }
 }

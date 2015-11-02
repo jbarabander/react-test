@@ -1,4 +1,4 @@
-React = require('react');
+var React = require('react');
 var Link = require('react-router').Link;
 module.exports = React.createClass({
     getInitialState: function() {
@@ -24,7 +24,6 @@ module.exports = React.createClass({
                     <h3>{this.props.passage}</h3>
                     <Link to='/signup'><button className='btn btn-info view big-button' onClick={this.handleClick}>Sign Up</button></Link> <button className='btn btn-danger about big-button'>About</button>
                 </div>
-                <button className={this.state.show ? 'hidden': 'btn btn-info view big-button'} onClick={this.handleClick}>Hide Profile</button>
             </div>
         )
     }
