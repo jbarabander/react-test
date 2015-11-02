@@ -17,6 +17,9 @@ module.exports = React.createClass({
                             <div className='col-sm-3 col-xs-6'><a href='#' className='icon-link'><i className='fa fa-google-plus auth-icon'></i></a></div>
                             <div className='col-sm-3 col-xs-6'><a href='#' className='icon-link'><i className='fa fa-github auth-icon'></i></a></div>
                         </div>
+                        <div className='or-with-line'>
+                            <span>or</span>
+                        </div>
                         <div>
                             <form className="form form-group">
                                 <label>Email or Username</label>
