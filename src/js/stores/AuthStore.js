@@ -47,6 +47,11 @@ AuthStore.dispatcherIndex = AppDispatcher(function(payload) {
         case authConstants.LOGIN_SUCCESS:
             login(action.user);
             AuthStore.emitChange();
+            break;
+        case authConstants.LOGOUT_SUCCESS:
+            logout();
+            AuthStore.emitChange();
+            break;
     }
 });
 

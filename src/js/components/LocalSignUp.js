@@ -32,10 +32,7 @@ module.exports = React.createClass({
         event.preventDefault();
         var self = this;
         if(this.state.password === this.state.repeatedPassword && this.state.password !== '') {
-            console.log('hi');
-            UserActions.create(this.state, function() {
-                self.history.pushState(null,'/')
-            });
+            UserActions.create(this.state);
         }
     },
     render: function() {
