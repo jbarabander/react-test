@@ -10,12 +10,27 @@ function login(content) {
             if(err) throw new Error(err.message);
             AppDispatcher.handleViewAction({
                 actionType: authConstants.LOGIN_SUCCESS,
-                content: res
+                content: JSON.parse(res.text)
             });
             RouterContainer.get().history.pushState(null, '/');
         })
 }
 
+function getSession() {
+    request.get('/session')
+    .end(function(err, res) {
+            if(err) throw new Error(err.message);
+            var resObj = JSON.parse(res.text);
+            if(res.status !== 401) {
+                AppDispatcher.handleViewAction({
+                    actionType: authConstants.LOGIN_SUCCESS,
+                    content: resObj.user
+                })
+            }
+        })
+}
+
 module.exports = {
-    login: login
+    login: login,
+    getSession: getSession
 }

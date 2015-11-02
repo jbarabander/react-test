@@ -14,16 +14,23 @@ function login(user) {
     loggedInUser = user;
 }
 
-function isLoggedIn() {
-    return !!loggedInUser;
-}
-
-
-function isAdmin() {
-    return !!(isLoggedIn() && loggedInUser.isAdmin);
-}
+//function isAdmin() {
+//    return !!(isLoggedIn() && loggedInUser.isAdmin);
+//}
 
 var AuthStore = Object.create(EventEmitter.prototype);
+
+AuthStore.getLoggedInUser = function() {
+    return loggedInUser;
+};
+
+AuthStore.isLoggedIn = function() {
+    return !!loggedInUser;
+};
+
+AuthStore.isAdmin = function() {
+    return !!(this.isLoggedIn() && loggedInUser.isAdmin);
+}
 
 AuthStore.emitChange = function() {
     this.emit(CHANGE_EVENT);
@@ -41,11 +48,11 @@ AuthStore.getLoggedInUser = function() {
     return loggedInUser;
 };
 
-AuthStore.dispatcherIndex = AppDispatcher(function(payload) {
+AuthStore.dispatcherIndex = AppDispatcher.register(function(payload) {
     var action = payload.action;
     switch(action.actionType) {
         case authConstants.LOGIN_SUCCESS:
-            login(action.user);
+            login(action.content);
             AuthStore.emitChange();
             break;
         case authConstants.LOGOUT_SUCCESS:
@@ -55,3 +62,4 @@ AuthStore.dispatcherIndex = AppDispatcher(function(payload) {
     }
 });
 
+module.exports = AuthStore;
