@@ -25,10 +25,10 @@ var routes = (
 
 var AppRouter = ReactDom.render((
     <Router history={createBrowserHistory()}>
-        <Route path='/' component={App}>
+        <Route name='home' path='/' component={App}>
             <IndexRoute component={StartScreen}/>
-            <Route path='signup' component={SignUp}/>
-            <Route path='login' component={Login}/>
+            <Route name='signup' path='signup' component={SignUp}/>
+            <Route name='login' path='login' component={Login}/>
         </Route>
     </Router>
     ), document.getElementById('content'));
