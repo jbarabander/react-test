@@ -21,10 +21,12 @@ function getSession() {
     .end(function(err, res) {
             if(err) throw new Error(err.message);
             var resObj = JSON.parse(res.text);
-            AppDispatcher.handleViewAction({
-                actionType: authConstants.LOGIN_SUCCESS,
-                content: resObj.user
-            })
+            if(res.status !== 401) {
+                AppDispatcher.handleViewAction({
+                    actionType: authConstants.LOGIN_SUCCESS,
+                    content: resObj.user
+                })
+            }
         })
 }
 
