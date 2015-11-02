@@ -10,7 +10,7 @@ function login(content) {
             if(err) throw new Error(err.message);
             AppDispatcher.handleViewAction({
                 actionType: authConstants.LOGIN_SUCCESS,
-                content: res
+                content: JSON.parse(res.text)
             });
             RouterContainer.get().history.pushState(null, '/');
         })

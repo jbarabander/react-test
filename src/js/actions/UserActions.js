@@ -12,11 +12,11 @@ function create(content) {
             if(err) throw new Error(err.message);
             AppDispatcher.handleViewAction({
                 actionType: userConstants.USER_CREATE,
-                content: res
+                content: JSON.parse(res.text)
             });
             AppDispatcher.handleViewAction({
                 actionType: authConstants.LOGIN_SUCCESS,
-                content: res
+                content: JSON.parse(res.text)
             });
             RouterContainer.get().history.pushState(null, '/');
         });
