@@ -1,12 +1,16 @@
 
 #inter-navbar {
-  background-color: #1565c0;
-  border: 1px solid #1565c0;
+  background: #1565c0;
+  border: 0px;
   border-radius: 0px;
   //padding-top: 6px;
   //padding-bottom: 6px;
   padding-left: 80px;
   padding-right: 80px;
+}
+
+.navbar-brand{
+  color: white;
 }
 
 .navbar-nav {
