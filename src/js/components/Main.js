@@ -25,11 +25,6 @@ function isLoggedIn() {
 //<StartScreen name={this.state.name} passage={this.state.passage}/>
 var App = React.createClass({
     getInitialState: function() {
-        //return {
-        //    name: {first: 'Justin', last: 'Barabander'},
-        //    passage: 'Welcome to my Site'
-        //}
-
         return {
             loggedInUser: null,
             passage: 'Meet me in the middle!',
@@ -49,7 +44,7 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
-                <Navbar name={this.state.loggedInUser ? this.state.loggedInUser.firstName : ''}></Navbar>
+                <Navbar user={this.state.loggedInUser ? this.state.loggedInUser : ''}></Navbar>
                 {this.props.children}
             </div>
         )
