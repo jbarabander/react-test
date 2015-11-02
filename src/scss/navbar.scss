@@ -10,6 +10,20 @@ $login-btn-hover-color: #039be5;
   padding-right: 80px;
 }
 
+@mixin sliding-underline($color) {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width .5s ease, background-color .5s ease;
+  -webkit-transition: width .5s ease, background-color .5s ease;
+}
+
+
 .navbar-brand {
   color: white;
 }
@@ -24,15 +38,7 @@ $login-btn-hover-color: #039be5;
     transition: background-color .4s, color .4s, border .4s;
     -webkit-transition: background-color .4s, color .4s, border .4s;
     &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 3px;
-      width: 0;
-      background: transparent;
-      transition: width .5s ease, background-color .5s ease;
+      @include sliding-underline(blue);
     }
     &:hover {
       background-color: $login-btn-hover-color !important;
@@ -54,8 +60,8 @@ $login-btn-hover-color: #039be5;
   background-color: $login-btn-hover-color !important;
   border-right: 1px solid $login-btn-hover-color !important;
   border-left: 1px solid $login-btn-hover-color !important;
-  &:after {
-    width: 100%;
-    background: blue;
-  }
+  //&:after {
+  //  width: 100% !important;
+  //  background: blue !important;
+  //}
 }
