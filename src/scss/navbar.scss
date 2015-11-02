@@ -1,3 +1,4 @@
+$login-btn-hover-color: #ce93d8;
 
 #inter-navbar {
   background: #1565c0;
@@ -9,20 +10,33 @@
   padding-right: 80px;
 }
 
-.navbar-brand{
+.navbar-brand {
   color: white;
 }
 
 .navbar-nav {
   & > li > a {
     color: white !important;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    transition: background-color .4s, color .4s, border .4s;
+    -webkit-transition: background-color .4s, color .4s, border .4s;
+
+    &:hover {
+      background-color: $login-btn-hover-color !important;
+      color: #1565c0 !important;
+      border-right: 1px solid $login-btn-hover-color;
+      border-left: 1px solid $login-btn-hover-color;
+    }
+    &:focus {
+      outline: 0 !important;
+    }
   }
 }
 
 .active {
-  & > button {
-    background-color: $login-btn-hover-color !important;
-    border: 1.5px solid $login-btn-hover-color !important;
-    color: #1565c0 !important;
-  }
+  background-color: $login-btn-hover-color !important;
+  border-right: 1px solid $login-btn-hover-color !important;
+  border-left: 1px solid $login-btn-hover-color !important;
+  color: #1565c0 !important;
 }

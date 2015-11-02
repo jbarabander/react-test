@@ -6,6 +6,8 @@ var AuthActions = require('../actions/AuthActions.js');
 //    return <li key={index}><a href="#">{element}</a></li>
 //})}
 
+//<button className='btn login-btn big-button'>Log in</button>
+
 module.exports = React.createClass({
     _onLogout: function() {
         AuthActions.logout();
@@ -19,7 +21,7 @@ module.exports = React.createClass({
                         <div className='navbar-right'>
                             <ul className='nav navbar-nav'>
                                 <li className={this.props.user ? '': 'hidden'}><a href='#' onClick={this._onLogout}>Logout</a></li>
-                                <li className={this.props.user ? 'hidden': ''}><Link to='/login' activeClassName='active'><button className='btn login-btn big-button'>Log in</button></Link></li>
+                                <li className={this.props.user ? 'hidden': ''}><Link to='/login' activeClassName='active'>Log In</Link></li>
                             </ul>
                         </div>
                     </div>
