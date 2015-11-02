@@ -30,7 +30,20 @@ function getSession() {
         })
 }
 
+function logout() {
+    request.get('/logout')
+    .end(function(err, res) {
+            if(err) throw new Error(err.message);
+            AppDispatcher.handleViewAction({
+                actionType: authConstants.LOGOUT_SUCCESS,
+                content: null
+            })
+            RouterContainer.get().history.pushState(null, '/');
+        })
+}
+
 module.exports = {
     login: login,
-    getSession: getSession
-}
+    getSession: getSession,
+    logout: logout
+};

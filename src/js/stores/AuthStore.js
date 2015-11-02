@@ -44,9 +44,6 @@ AuthStore.removeChangeListener = function(cb) {
     this.removeListener(CHANGE_EVENT, cb);
 };
 
-AuthStore.getLoggedInUser = function() {
-    return loggedInUser;
-};
 
 AuthStore.dispatcherIndex = AppDispatcher.register(function(payload) {
     var action = payload.action;
