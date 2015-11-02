@@ -14,6 +14,10 @@ function create(content) {
                 actionType: userConstants.USER_CREATE,
                 content: res
             });
+            AppDispatcher.handleViewAction({
+                actionType: authConstants.LOGIN_SUCCESS,
+                content: res
+            });
             RouterContainer.get().history.pushState(null, '/');
         });
 }
