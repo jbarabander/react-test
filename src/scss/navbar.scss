@@ -10,7 +10,7 @@ $login-btn-hover-color: #039be5;
   padding-right: 80px;
 }
 
-@mixin sliding-underline($color) {
+@mixin sliding-underline() {
   content: '';
   display: block;
   position: absolute;
@@ -38,7 +38,7 @@ $login-btn-hover-color: #039be5;
     transition: background-color .4s, color .4s, border .4s;
     -webkit-transition: background-color .4s, color .4s, border .4s;
     &:after {
-      @include sliding-underline(blue);
+      @include sliding-underline();
     }
     &:hover {
       background-color: $login-btn-hover-color !important;
