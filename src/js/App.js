@@ -9,6 +9,7 @@ var Router = require('react-router').Router;
 var Route = require('react-router').Route;
 var SignUp = require('./components/SignUp.js');
 var Login = require('./components/Login.js');
+var Contact = require('./components/Contact.js');
 var attachFastClick = require('fastclick');
 attachFastClick(document.body);
 var createBrowserHistory = require('history/lib/createBrowserHistory');
@@ -29,6 +30,7 @@ var AppRouter = ReactDom.render((
             <IndexRoute component={StartScreen}/>
             <Route name='signup' path='signup' component={SignUp}/>
             <Route name='login' path='login' component={Login}/>
+            <Route name='contact' path='contact' component={Contact}/>
         </Route>
     </Router>
     ), document.getElementById('content'));
