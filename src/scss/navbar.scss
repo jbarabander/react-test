@@ -84,7 +84,7 @@ $contact-btn-hover-color: #F06D71;
   background-color: $login-btn-hover-color !important;
   border-right: 1px solid $login-btn-hover-color !important;
   border-left: 1px solid $login-btn-hover-color !important;
-  z-index: 1000;
+  z-index: 1000 !important;
   //&:after {
   //  width: 100% !important;
   //  background: blue !important;
