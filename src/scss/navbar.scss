@@ -80,19 +80,19 @@ $contact-btn-hover-color: #F06D71;
   @include navbar-link($contact-btn-hover-color, #880e4f);
 }
 
-.login-active {
-  background-color: $login-btn-hover-color !important;
-  border-right: 1px solid $login-btn-hover-color !important;
-  border-left: 1px solid $login-btn-hover-color !important;
-  z-index: 1000 !important;
+#login-link.login-active {
+  background-color: $login-btn-hover-color;
+  border-right: 1px solid $login-btn-hover-color;
+  border-left: 1px solid $login-btn-hover-color;
+  z-index: 1000;
   //&:after {
   //  width: 100% !important;
   //  background: blue !important;
   //}
 }
-.contact-active {
-  background-color: $contact-btn-hover-color !important;
-  border-right: 1px solid $contact-btn-hover-color !important;
-  border-left: 1px solid $contact-btn-hover-color !important;
+#contact-link.contact-active {
+  background-color: $contact-btn-hover-color;
+  border-right: 1px solid $contact-btn-hover-color;
+  border-left: 1px solid $contact-btn-hover-color;
   z-index: 1000;
 }
