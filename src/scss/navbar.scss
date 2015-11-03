@@ -15,7 +15,7 @@ $contact-btn-hover-color: #F06D71;
   display: block;
   position: absolute;
   bottom: 0;
-  left: -1px;
+  left: 0;
   height: 3px;
   width: 0;
   background: $ul-color;
@@ -29,8 +29,6 @@ $contact-btn-hover-color: #F06D71;
   position: relative;
   color: white !important;
   box-sizing: border-box;
-  border-right: 1px solid white;
-  border-left: 1px solid white;
   z-index: 1000;
   transition: background-color .4s ease, color .4s ease, border .4s ease, z-index .4s ease;
   -webkit-transition: background-color .4s ease, color .4s ease, border .4s ease, z-index .4s ease, opacity .4s ease;
@@ -40,13 +38,10 @@ $contact-btn-hover-color: #F06D71;
   &:hover {
     background-color: $hover-color !important;
     //color: #1565c0 !important;
-    border-right: 1px solid $hover-color;
-    border-left: 1px solid $hover-color;
     z-index: 999;
     &:after {
       box-sizing: content-box;
       width: 100%;
-      border-right: 2px solid $ul-color;
       background: $ul-color;
     }
   }
@@ -62,7 +57,6 @@ $contact-btn-hover-color: #F06D71;
 
 #login-link {
   @include navbar-link($login-btn-hover-color, blue);
-  margin-right: -1px;
   //@include navbar-link($login-btn-hover-color, #1565c0);
   //@include navbar-link($login-btn-hover-color, #0d47a1);
 }
@@ -70,7 +64,6 @@ $contact-btn-hover-color: #F06D71;
 #logout-link {
   @include navbar-link($login-btn-hover-color, blue);
   //@include navbar-link($login-btn-hover-color, #1565c0);
-  margin-right: -1px;
   //@include navbar-link($login-btn-hover-color, #0d47a1);
 }
 
@@ -80,14 +73,10 @@ $contact-btn-hover-color: #F06D71;
 
 #login-link.login-active {
   background-color: $login-btn-hover-color;
-  border-right: 1px solid $login-btn-hover-color;
-  border-left: 1px solid $login-btn-hover-color;
   z-index: 1000;
 }
 
 #contact-link.contact-active {
   background-color: $contact-btn-hover-color;
-  border-right: 1px solid $contact-btn-hover-color;
-  border-left: 1px solid $contact-btn-hover-color;
   z-index: 1000;
 }
