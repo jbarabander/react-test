@@ -23,43 +23,59 @@ $login-btn-hover-color: #039be5;
   -webkit-transition: width .5s ease, background-color .5s ease;
 }
 
+@mixin navbar-link($hover-color, $ul-color) {
+  display: inline-block;
+  position: relative;
+  color: white !important;
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  transition: background-color .4s, color .4s, border .4s;
+  -webkit-transition: background-color .4s, color .4s, border .4s;
+  &:after {
+    @include sliding-underline();
+  }
+  &:hover {
+    background-color: $hover-color !important;
+    //color: #1565c0 !important;
+    border-right: 1px solid $hover-color;
+    border-left: 1px solid $hover-color;
+    z-index: 999;
+    &:after {
+      width: 100%;
+      background: $ul-color;
+    }
+  }
+  &:focus {
+    outline: 0 !important;
+  }
+}
+
 
 .navbar-brand {
   color: white;
 }
 
-.navbar-nav {
-  & > li > a {
-    display: inline-block;
-    position: relative;
-    color: white !important;
-    border-right: 1px solid white;
-    border-left: 1px solid white;
-    transition: background-color .4s, color .4s, border .4s;
-    -webkit-transition: background-color .4s, color .4s, border .4s;
-    &:after {
-      @include sliding-underline();
-    }
-    &:hover {
-      background-color: $login-btn-hover-color !important;
-      //color: #1565c0 !important;
-      border-right: 1px solid $login-btn-hover-color;
-      border-left: 1px solid $login-btn-hover-color;
-      &:after {
-        width: 100%;
-        background: blue;
-      }
-    }
-    &:focus {
-      outline: 0 !important;
-    }
-  }
+#login-link {
+  @include navbar-link($login-btn-hover-color, blue);
+  margin-right: -1px;
+  //@include navbar-link($login-btn-hover-color, #0d47a1);
 }
 
-.active {
+#logout-link {
+  @include navbar-link($login-btn-hover-color, blue);
+  margin-right: -1px;
+  //@include navbar-link($login-btn-hover-color, #0d47a1);
+}
+
+#contact-link {
+  @include navbar-link(#F06D71, #880e4f);
+}
+
+.login-active {
   background-color: $login-btn-hover-color !important;
   border-right: 1px solid $login-btn-hover-color !important;
   border-left: 1px solid $login-btn-hover-color !important;
+  z-index: 1000;
   //&:after {
   //  width: 100% !important;
   //  background: blue !important;

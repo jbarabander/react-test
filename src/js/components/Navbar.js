@@ -20,8 +20,9 @@ module.exports = React.createClass({
                         <Link to='/' className='navbar-brand'>Welcome {this.props.user.firstName}</Link>
                         <div className='navbar-right'>
                             <ul className='nav navbar-nav'>
-                                <li className={this.props.user ? '': 'hidden'}><a href='#' onClick={this._onLogout}>Logout</a></li>
-                                <li className={this.props.user ? 'hidden': ''}><Link to='/login' activeClassName='active'>Log In</Link></li>
+                                <li className={this.props.user ? '': 'hidden'}><a href='#' id='logout-link' onClick={this._onLogout}>Logout</a></li>
+                                <li className={this.props.user ? 'hidden': ''}><Link to='/login' activeClassName='login-active' id='login-link'>Log In</Link></li>
+                                <li><Link to='/contact' activeClassName='contact-active' id='contact-link'>Contact</Link></li>
                             </ul>
                         </div>
                     </div>
