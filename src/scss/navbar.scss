@@ -3,10 +3,8 @@ $contact-btn-hover-color: #F06D71;
 $home-btn-hover-color: #ffb300;
 #inter-navbar {
   background: #37474f;
-  border: 0px;
-  border-radius: 0px;
-  //padding-top: 6px;
-  //padding-bottom: 6px;
+  border: 0;
+  border-radius: 0;
   padding-left: 80px;
   padding-right: 80px;
 }
@@ -17,6 +15,7 @@ $home-btn-hover-color: #ffb300;
   position: absolute;
   bottom: 0;
   left: 0;
+  //left: -1px;
   height: 3px;
   width: 0;
   background: $ul-color;
@@ -30,6 +29,8 @@ $home-btn-hover-color: #ffb300;
   position: relative;
   color: white !important;
   box-sizing: border-box;
+  //border-right: 1px solid white;
+  //border-left: 1px solid white;
   z-index: 1000;
   transition: background-color .4s ease, color .4s ease, border .4s ease, z-index .4s ease;
   -webkit-transition: background-color .4s ease, color .4s ease, border .4s ease, z-index .4s ease, opacity .4s ease;
@@ -39,10 +40,13 @@ $home-btn-hover-color: #ffb300;
   &:hover {
     background-color: $hover-color !important;
     //color: #1565c0 !important;
+    //border-right: 1px solid $hover-color;
+    //border-left: 1px solid $hover-color;
     z-index: 999;
     &:after {
       box-sizing: content-box;
       width: 100%;
+      //border-right: 2px solid $ul-color;
       background: $ul-color;
     }
   }
@@ -50,6 +54,7 @@ $home-btn-hover-color: #ffb300;
     outline: 0 !important;
   }
 }
+
 
 
 .navbar-brand {
@@ -62,14 +67,15 @@ $home-btn-hover-color: #ffb300;
 
 #login-link {
   @include navbar-link($login-btn-hover-color, blue);
-  //@include navbar-link($login-btn-hover-color, #1565c0);
-  //@include navbar-link($login-btn-hover-color, #0d47a1);
+  //margin-right: -1px;
+  //border-right: 1px solid rgba(3,155,229, 0);
+  //z-index: 1;
 }
 
 #logout-link {
   @include navbar-link($login-btn-hover-color, blue);
-  //@include navbar-link($login-btn-hover-color, #1565c0);
-  //@include navbar-link($login-btn-hover-color, #0d47a1);
+  //margin-right: -1px;
+  //z-index: 1;
 }
 
 #contact-link {
@@ -78,11 +84,15 @@ $home-btn-hover-color: #ffb300;
 
 #login-link.login-active {
   background-color: $login-btn-hover-color;
+  //border-right: 1px solid $login-btn-hover-color;
+  //border-left: 1px solid $login-btn-hover-color;
   z-index: 1000;
 }
 
 #contact-link.contact-active {
   background-color: $contact-btn-hover-color;
+  //border-right: 1px solid $contact-btn-hover-color;
+  //border-left: 1px solid $contact-btn-hover-color;
   z-index: 1000;
 }
 #home-link.home-active {
