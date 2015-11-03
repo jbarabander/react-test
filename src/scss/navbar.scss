@@ -1,5 +1,6 @@
 $login-btn-hover-color: #039be5;
 $contact-btn-hover-color: #F06D71;
+$home-btn-hover-color: #ffb300;
 #inter-navbar {
   background: #37474f;
   border: 0px;
@@ -55,6 +56,10 @@ $contact-btn-hover-color: #F06D71;
   color: white;
 }
 
+#home-link {
+  @include navbar-link($home-btn-hover-color, #ef6c00);
+}
+
 #login-link {
   @include navbar-link($login-btn-hover-color, blue);
   //@include navbar-link($login-btn-hover-color, #1565c0);
@@ -78,5 +83,9 @@ $contact-btn-hover-color: #F06D71;
 
 #contact-link.contact-active {
   background-color: $contact-btn-hover-color;
+  z-index: 1000;
+}
+#home-link.home-active {
+  background-color: $home-btn-hover-color;
   z-index: 1000;
 }
