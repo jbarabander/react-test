@@ -17,13 +17,6 @@ window.React = React;
 var RouterContainer = require('./containers/RouterContainer.js');
 
 
-var routes = (
-    <Route path='/' component={App}>
-        <IndexRoute component={StartScreen}/>
-        <Route path='signup' component={SignUp}/>
-    </Route>
-);
-
 var AppRouter = ReactDom.render((
     <Router history={createBrowserHistory()}>
         <Route path='/' component={App}>
