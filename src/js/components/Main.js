@@ -44,7 +44,7 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
-                <Navbar user={this.state.loggedInUser ? this.state.loggedInUser : ''}></Navbar>
+                <Navbar user={isLoggedIn() ? this.state.loggedInUser : ''}></Navbar>
                 {this.props.children}
             </div>
         )
