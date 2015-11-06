@@ -10,7 +10,7 @@ module.exports = function (app) {
     app.post('/login', function (req, res, next) {
         var emailOrUsername = req.body.usernameOrEmail;
         var password = req.body.password;
-        var query = User.findOne({$or: [{email: emailOrUsername}, {username: emailOrUsername}]})
+        var query = User.findByUsernameOrEmail(emailOrUsername, true)
             .select('+password');
         query.exec(function(err, user) {
             if(err) return next(err);
