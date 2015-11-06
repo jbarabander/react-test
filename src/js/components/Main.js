@@ -1,11 +1,11 @@
 var React = require('react');
+React.cloneWithProps = require('react-addons-clone-with-props');
 var StartScreen = require('./StartScreen.js');
 var UserStore = require('../stores/UserStore.js');
 var AuthStore = require('../stores/AuthStore.js');
 var SignUp = require('./SignUp.js');
 var Navbar = require('./Navbar.js');
 var AuthActions = require('../actions/AuthActions.js');
-
 function getUserState() {
     return {
         allUsers: UserStore.getAll()
@@ -35,7 +35,6 @@ var App = React.createClass({
         //UserStore.addChangeListener(this._onChange);
         AuthStore.addChangeListener(this._onChange);
         AuthActions.getSession();
-
     },
     componentWillUnmount: function() {
         //UserStore.removeChangeListener(this._onChange)
