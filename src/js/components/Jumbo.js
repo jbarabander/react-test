@@ -6,9 +6,6 @@ module.exports = React.createClass({
     //        show: true
     //    }
     //},
-    componentDidMount: function() {
-        console.log('hi');
-    },
     render: function() {
         return (
             <div>

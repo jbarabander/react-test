@@ -12,8 +12,13 @@ module.exports = React.createClass({
 
     },
     getInitialState() {
+        return {
+            users: SearchStore.getUsers(),
+            locations: SearchStore.getLocations()
+        }
     },
     render() {
+        console.log(this.state);
         return (
             <div className='container'>
                 <div className='container'>

@@ -10,7 +10,7 @@ var CHANGE_EVENT = 'searchChange';
 
 function update(content) {
     _searchResults = content;
-};
+}
 
 SearchStore.getUsers = function() {
     return _searchResults.users;
@@ -37,13 +37,11 @@ SearchStore.removeChangeListener = function(cb) {
 
 SearchStore.dispatcherIndex = AppDispatcher.register(payload => {
     var action = payload.action;
-
     switch(action.actionType) {
         case searchConstants.SEARCH_LAUNCH:
             update(action.content);
             SearchStore.emitChange();
             break;
-
         // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }
     return true; // No errors. Needed by promise in Dispatcher.
