@@ -79,7 +79,13 @@ schema.pre('save', function(next) {
     this.hash(this.password, next);
 });
 
-
+schema.statics.findByUsernameOrEmail = function(param, findOne) {
+    if(findOne !== true) findOne = false;
+    if(findOne === true) {
+        return this.findOne({$or: [{username: param}, {email: param}]});
+    }
+    return this.find({$or: [{username: param}, {email: param}]});
+};
 //schema.pre('save', function(next) {
 //    if(!this.isNew) return next();
 //    this.hashPromise(this.password)

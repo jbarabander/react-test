@@ -5,6 +5,7 @@ var LocalSignUp = require('./LocalSignUp');
 
 module.exports = React.createClass({
     render: function() {
+        console.log(this.props);
         return (
             <div className='container'>
                 <h1>Sign Up</h1>

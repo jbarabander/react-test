@@ -4,6 +4,7 @@ module.exports = router;
 
 //router.use('/members', require('./members/index'));
 router.use('/users', require('./user.js'));
+router.use('/search', require('./search.js'));
 //router.use('/products', require('./products/index'));
 //router.use('/reviews', require('./reviews/index'));
 //router.use('/orders', require('./orders/index'));

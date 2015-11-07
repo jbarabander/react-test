@@ -18,6 +18,14 @@ module.exports = React.createClass({
     isLinkActive(path, query) {
       return this.history.isActive(path, query, true);
     },
+    _onChange: function(event) {
+        var obj = {};
+        obj.searchParam = event.target.value;
+        this.setState(obj);
+    },
+    _onSearch: function() {
+
+    },
     render: function () {
         return (
             <div>
