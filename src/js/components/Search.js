@@ -24,7 +24,6 @@ module.exports = React.createClass({
         }
     },
     render() {
-        console.log(this.state.users);
         return (
             <div className='container'>
                 <div className='container'>
