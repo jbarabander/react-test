@@ -5,6 +5,7 @@ var IndexLink = require('react-router').IndexLink;
 var AuthActions = require('../actions/AuthActions.js');
 var SearchActions = require('../actions/SearchActions.js');
 var History = require('react-router').History;
+var RouteContext = require('react-router').RouteContext;
 //{data.map((element, index) => {
 //    return <li key={index}><a href="#">{element}</a></li>
 //})}
@@ -31,12 +32,14 @@ module.exports = React.createClass({
     },
     _onKeyPress: function (event) {
         if (event.which === 13) {
-            //SearchActions.search(this.state);
+            if(this.history.isActive('/search')) {
+                SearchActions.search(this.state);
+            }
             this.history.pushState(null, '/search', this.state);
         }
     },
     _onSearch: function () {
-        SearchActions.search(this.state);
+        //SearchActions.search(this.state);
     },
     render: function () {
         var searchValue = this.state.q;
