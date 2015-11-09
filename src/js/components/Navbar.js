@@ -13,7 +13,7 @@ var History = require('react-router').History;
 
 module.exports = React.createClass({
     mixins: [History],
-    _onLogout: function() {
+    _onLogout: function () {
         AuthActions.logout();
     },
     getInitialState() {
@@ -22,17 +22,21 @@ module.exports = React.createClass({
         }
     },
     isLinkActive(path, query) {
-      return this.history.isActive(path, query, true);
+        return this.history.isActive(path, query, true);
     },
-    _onChange: function(event) {
+    _onChange: function (event) {
         var obj = {};
         obj.q = event.target.value;
         this.setState(obj);
     },
-    _onKeyPress: function(event) {
-        if(event.which === 13) {
+    _onKeyPress: function (event) {
+        if (event.which === 13) {
+            //SearchActions.search(this.state);
             this.history.pushState(null, '/search', this.state);
         }
+    },
+    _onSearch: function () {
+        SearchActions.search(this.state);
     },
     render: function () {
         var searchValue = this.state.q;
@@ -41,22 +45,35 @@ module.exports = React.createClass({
                 <div className='navbar navbar-inverse' id='inter-navbar'>
                     <div className='container-fluid'>
                         <Link to='/' className='navbar-brand'>Welcome {this.props.user.firstName}</Link>
+
                         <div className='navbar-right'>
                             <ul className='nav navbar-nav'>
-                                <li><div className='search-container'>
-                                        <label htmlFor="search-bar" className='search-label' >
-                                            <Link to='/search' query={this.state}><i className=' fa fa-search'></i></Link>
+                                <li>
+                                    <div className='search-container'>
+                                        <label htmlFor="search-bar" className='search-label'>
+                                            <Link to='/search' query={this.state}><i
+                                                className=' fa fa-search'></i></Link>
                                         </label>
-                                    <input id='search-bar' type="text" className='form-control' value={searchValue} onChange={this._onChange} onKeyPress={this._onKeyPress}/>
-                                </div></li>
+                                        <input id='search-bar' type="text" className='form-control' value={searchValue}
+                                               onChange={this._onChange} onKeyPress={this._onKeyPress}/>
+                                    </div>
+                                </li>
                                 <li><IndexLink to='/' id='home-link' activeClassName='home-active'>Home</IndexLink></li>
                                 {/*
-                                <li><Link to='/search' id='search-link'>Search</Link></li>
-                                */}
-                                <li className={this.props.user ? '': 'hidden'}><a href='#' id='logout-link' onClick={this._onLogout}>Logout</a></li>
-                                <li className={this.props.user ? 'hidden': ''}><Link to='/signup' activeClassName='signup-active'  id='signup-link'>Sign Up</Link></li>
-                                <li className={this.props.user ? 'hidden': ''}><Link to='/login' activeClassName='login-active' id='login-link'>Log In</Link></li>
-                                <li><Link to='/contact' activeClassName='contact-active' id='contact-link'>Contact</Link></li>
+                                 <li><Link to='/search' id='search-link'>Search</Link></li>
+                                 */}
+                                <li className={this.props.user ? '': 'hidden'}><a href='#' id='logout-link'
+                                                                                  onClick={this._onLogout}>Logout</a>
+                                </li>
+                                <li className={this.props.user ? 'hidden': ''}><Link to='/signup'
+                                                                                     activeClassName='signup-active'
+                                                                                     id='signup-link'>Sign Up</Link>
+                                </li>
+                                <li className={this.props.user ? 'hidden': ''}><Link to='/login'
+                                                                                     activeClassName='login-active'
+                                                                                     id='login-link'>Log In</Link></li>
+                                <li><Link to='/contact' activeClassName='contact-active'
+                                          id='contact-link'>Contact</Link></li>
                             </ul>
                         </div>
                     </div>

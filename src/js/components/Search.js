@@ -28,16 +28,26 @@ module.exports = React.createClass({
             <div className='container'>
                 <div className='container'>
                     <h3>Users</h3>
+
                     <div>
-                        {this.state.users ? this.state.users.map(function(element, index) {
+                        {this.state.users ? this.state.users.map(function (element, index) {
                             return (<div key={index}>
                                 <h4>{element.username}</h4>
+
                                 <p>{element.email}</p>
                             </div>)
                         }) : null}
                     </div>
                     <h3>Locations</h3>
+
                     <div>
+                        {this.state.locations ? this.state.locations.map(function(element, index) {
+                            return (<div key={index}>
+                                <h4>{element.username}</h4>
+
+                                <p>{element.email}</p>
+                            </div>)
+                        }): null}
                     </div>
                 </div>
             </div>
