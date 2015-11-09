@@ -3,6 +3,7 @@ var React = require('react');
 var Link = require('react-router').Link;
 var IndexLink = require('react-router').IndexLink;
 var AuthActions = require('../actions/AuthActions.js');
+var SearchActions = require('../actions/SearchActions.js');
 var History = require('react-router').History;
 //{data.map((element, index) => {
 //    return <li key={index}><a href="#">{element}</a></li>
@@ -15,18 +16,21 @@ module.exports = React.createClass({
     _onLogout: function() {
         AuthActions.logout();
     },
+    getInitialState() {
+        return {
+            q: ''
+        }
+    },
     isLinkActive(path, query) {
       return this.history.isActive(path, query, true);
     },
     _onChange: function(event) {
         var obj = {};
-        obj.searchParam = event.target.value;
+        obj.q = event.target.value;
         this.setState(obj);
     },
-    _onSearch: function() {
-
-    },
     render: function () {
+        var searchValue = this.state.q;
         return (
             <div>
                 <div className='navbar navbar-inverse' id='inter-navbar'>
@@ -34,7 +38,12 @@ module.exports = React.createClass({
                         <Link to='/' className='navbar-brand'>Welcome {this.props.user.firstName}</Link>
                         <div className='navbar-right'>
                             <ul className='nav navbar-nav'>
-                                <li><div className='search-container'><label htmlFor="search-bar" className='search-label'><i className=' fa fa-search'></i></label><input id='search-bar' type="text" className='form-control'/></div></li>
+                                <li><div className='search-container'>
+                                        <label htmlFor="search-bar" className='search-label' >
+                                            <Link to='/search' query={this.state}><i className=' fa fa-search'></i></Link>
+                                        </label>
+                                    <input id='search-bar' type="text" className='form-control' value={searchValue} onChange={this._onChange}/>
+                                </div></li>
                                 <li><IndexLink to='/' id='home-link' activeClassName='home-active'>Home</IndexLink></li>
                                 {/*
                                 <li><Link to='/search' id='search-link'>Search</Link></li>
