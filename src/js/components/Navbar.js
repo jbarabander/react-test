@@ -29,6 +29,11 @@ module.exports = React.createClass({
         obj.q = event.target.value;
         this.setState(obj);
     },
+    _onKeyPress: function(event) {
+        if(event.which === 13) {
+            this.history.pushState(null, '/search', this.state);
+        }
+    },
     render: function () {
         var searchValue = this.state.q;
         return (
@@ -42,7 +47,7 @@ module.exports = React.createClass({
                                         <label htmlFor="search-bar" className='search-label' >
                                             <Link to='/search' query={this.state}><i className=' fa fa-search'></i></Link>
                                         </label>
-                                    <input id='search-bar' type="text" className='form-control' value={searchValue} onChange={this._onChange}/>
+                                    <input id='search-bar' type="text" className='form-control' value={searchValue} onChange={this._onChange} onKeyPress={this._onKeyPress}/>
                                 </div></li>
                                 <li><IndexLink to='/' id='home-link' activeClassName='home-active'>Home</IndexLink></li>
                                 {/*
