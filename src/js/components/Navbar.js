@@ -32,13 +32,17 @@ module.exports = React.createClass({
     },
     _onKeyPress: function (event) {
         if (event.which === 13) {
-            if(this.history.isActive('/search')) {
+            if (this.history.isActive('/search')) {
                 SearchActions.search(this.state);
             }
             this.history.pushState(null, '/search', this.state);
         }
     },
     _onSearch: function () {
+        if(this.history.isActive('/search')) {
+            SearchActions.search(this.state);
+        }
+        this.history.pushState(null, '/search', this.state);
         //SearchActions.search(this.state);
     },
     render: function () {
@@ -54,8 +58,9 @@ module.exports = React.createClass({
                                 <li>
                                     <div className='search-container'>
                                         <label htmlFor="search-bar" className='search-label'>
-                                            <Link to='/search' query={this.state}><i
-                                                className=' fa fa-search'></i></Link>
+                                            <a onClick={this._onSearch}>
+                                                <i className=' fa fa-search'></i>
+                                            </a>
                                         </label>
                                         <input id='search-bar' type="text" className='form-control' value={searchValue}
                                                onChange={this._onChange} onKeyPress={this._onKeyPress}/>
