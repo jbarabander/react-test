@@ -1,10 +1,9 @@
-var EventEmitter = require('events').EventEmitter;
+'use strict'
 var AppDispatcher = require('../dispatchers/AppDispatcher');
 var searchConstants = require('../constants/searchConstants.js');
+var EventEmitter = require('events').EventEmitter;
 
 var _searchResults = {users: null, locations: null};
-
-var SearchStore = Object.create(EventEmitter.prototype);
 
 var CHANGE_EVENT = 'searchChange';
 
@@ -12,39 +11,35 @@ function update(content) {
     _searchResults = content;
 }
 
-SearchStore.getUsers = function() {
-    return _searchResults.users;
-};
+var SearchStore = Object.assign({}, EventEmitter.prototype, {
+    getUsers: function () {
+        return _searchResults.users;
+    },
+    getLocations: function () {
+        return _searchResults.locations;
+    },
+    emitChange: function () {
+        this.emit(CHANGE_EVENT);
+    },
+    addChangeListener: function (callback) {
+        this.on(CHANGE_EVENT, callback);
+    },
+    removeChangeListener: function (callback) {
+        this.removeListener(CHANGE_EVENT, callback);
+    },
+    dispatcherIndex: AppDispatcher.register(payload => {
+        var action = payload.action;
+        switch (action.actionType) {
+            case searchConstants.SEARCH_LAUNCH:
+                update(action.content);
+                //console.log(_searchResults);
+                SearchStore.emitChange();
+                break;
+        }
+        return true;
+    })
 
+    });
 
-SearchStore.getLocations = function() {
-    return _searchResults.locations;
-};
-
-
-
-SearchStore.emitChange = function() {
-    this.emit(CHANGE_EVENT);
-};
-
-SearchStore.addChangeListener = function(cb) {
-    this.on(CHANGE_EVENT, cb);
-};
-
-SearchStore.removeChangeListener = function(cb) {
-    this.removeListener(CHANGE_EVENT, cb);
-};
-
-SearchStore.dispatcherIndex = AppDispatcher.register(payload => {
-    var action = payload.action;
-    switch(action.actionType) {
-        case searchConstants.SEARCH_LAUNCH:
-            update(action.content);
-            SearchStore.emitChange();
-            break;
-        // add more cases for other actionTypes, like TODO_UPDATE, etc.
-    }
-    return true; // No errors. Needed by promise in Dispatcher.
-});
 
 module.exports = SearchStore;
