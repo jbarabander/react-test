@@ -60,6 +60,9 @@ schema.methods.hashPromise = function(pass) {
     .then(function(salt) {
             return bcrypt.hashAsync(pass, salt)
         })
+    .then(function(hash) {
+            self.password = hash;
+        })
 };
 
 schema.methods.authenticate = function(pass, cb) {
@@ -74,7 +77,6 @@ schema.methods.authenticatePromise = function(pass) {
 };
 
 schema.pre('save', function(next) {
-    console.log('in pre save');
     if(!this.isNew) return next();
     this.hash(this.password, next);
 });

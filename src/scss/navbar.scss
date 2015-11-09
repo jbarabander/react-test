@@ -2,6 +2,8 @@ $login-btn-hover-color: #039be5;
 $contact-btn-hover-color: #F06D71;
 $home-btn-hover-color: #ffb300;
 $signup-btn-hover-color: #00D478;
+//$search-btn-hover-color: #7c4dff;
+
 #inter-navbar {
   background: #37474f;
   border: 0;
@@ -57,7 +59,6 @@ $signup-btn-hover-color: #00D478;
 }
 
 
-
 .navbar-brand {
   color: white;
 }
@@ -72,6 +73,10 @@ $signup-btn-hover-color: #00D478;
   //border-right: 1px solid rgba(3,155,229, 0);
   //z-index: 1;
 }
+
+//#search-link {
+//  @include navbar-link($search-btn-hover-color, #006064);
+//}
 
 #logout-link {
   @include navbar-link($login-btn-hover-color, blue);
@@ -105,3 +110,26 @@ $signup-btn-hover-color: #00D478;
   background-color: $signup-btn-hover-color;
 }
 
+#search-bar {
+  padding-right: 30px;
+  margin-top: 7.5px;
+  border-radius: 50px;
+  width: 80%;
+}
+.search-btn {
+  border-radius: 100px;
+}
+
+.search-container {
+  position: relative;
+}
+.search-label {
+  right: 60px;
+  top: 8px;
+  position: absolute;
+}
+.search-input {
+  top: 30px;
+  right: 100px;
+  position: absolute;
+}

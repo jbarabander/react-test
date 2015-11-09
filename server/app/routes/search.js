@@ -8,10 +8,11 @@ function searchQuerySpecify(obj, type) {
 }
 
 router.get('/', function(req, res, next) {
-    console.log('search');
     var obj = {};
+    var regexQ = RegExp('.*' + req.query.q + '.*', 'i');
     if(searchQuerySpecify(req.query, 'user')) {
-        obj.users = User.findByUsernameOrEmail(req.query.q)
+        //obj.users = User.findByUsernameOrEmail(req.query.q);
+        obj.users = User.findByUsernameOrEmail(regexQ);
     }
     if(searchQuerySpecify(req.query, 'location')) {
     }

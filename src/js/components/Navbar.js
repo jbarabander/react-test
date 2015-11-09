@@ -34,7 +34,11 @@ module.exports = React.createClass({
                         <Link to='/' className='navbar-brand'>Welcome {this.props.user.firstName}</Link>
                         <div className='navbar-right'>
                             <ul className='nav navbar-nav'>
+                                <li><div className='search-container'><label htmlFor="search-bar" className='search-label'><i className=' fa fa-search'></i></label><input id='search-bar' type="text" className='form-control'/></div></li>
                                 <li><IndexLink to='/' id='home-link' activeClassName='home-active'>Home</IndexLink></li>
+                                {/*
+                                <li><Link to='/search' id='search-link'>Search</Link></li>
+                                */}
                                 <li className={this.props.user ? '': 'hidden'}><a href='#' id='logout-link' onClick={this._onLogout}>Logout</a></li>
                                 <li className={this.props.user ? 'hidden': ''}><Link to='/signup' activeClassName='signup-active'  id='signup-link'>Sign Up</Link></li>
                                 <li className={this.props.user ? 'hidden': ''}><Link to='/login' activeClassName='login-active' id='login-link'>Log In</Link></li>
