@@ -31,13 +31,15 @@ module.exports = React.createClass({
         this.setState(obj);
     },
     _onKeyPress: function (event) {
-        //console.log(this.history.isActive('/search'));
         if (event.which === 13) {
+            if(this.history.isActive('/search')) {
+                SearchActions.search(this.state);
+            }
             this.history.pushState(null, '/search', this.state);
         }
     },
     _onSearch: function () {
-        SearchActions.search(this.state);
+        //SearchActions.search(this.state);
     },
     render: function () {
         var searchValue = this.state.q;
