@@ -11,7 +11,7 @@ var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var notify = require('gulp-notify');
 var runSeq = require('run-sequence');
-var babel = require('babelify');
+var autoprefixer = require('gulp-autoprefixer');
 
 var path = {
     HTML: 'src/views/index.html',
@@ -69,6 +69,7 @@ gulp.task('buildCSS', function () {
             errLogToConsole: true
         }))
         .pipe(rename('style.css'))
+        .pipe(autoprefixer())
         .pipe(gulp.dest('./dist'))
         .pipe(notify({message: 'CSS tasks complete'}));
 });
