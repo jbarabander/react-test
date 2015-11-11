@@ -42,12 +42,14 @@
     "redux": "^3.0.4",
     "redux-devtools": "^2.1.5",
     "serve-favicon": "^2.3.0",
+    "spinkit": "^1.2.2",
     "superagent": "^1.4.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
     "babelify": "^6.4.0",
     "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^5.3.0",
     "gulp-eslint": "^1.0.0",
     "gulp-html-replace": "^1.5.4",

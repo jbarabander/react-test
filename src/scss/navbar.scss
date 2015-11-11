@@ -24,7 +24,6 @@ $signup-btn-hover-color: #00D478;
   background: $ul-color;
   //background: transparent; //FIXME
   transition: width .4s ease, background-color .4s ease;
-  -webkit-transition: width .4s ease, background-color .4s ease;
 }
 
 @mixin navbar-link($hover-color, $ul-color) {
@@ -36,7 +35,6 @@ $signup-btn-hover-color: #00D478;
   //border-left: 1px solid white;
   z-index: 1000;
   transition: background-color .4s ease, color .4s ease, border .4s ease, z-index .4s ease;
-  -webkit-transition: background-color .4s ease, color .4s ease, border .4s ease, z-index .4s ease, opacity .4s ease;
   &:after {
     @include sliding-underline($ul-color);
   }

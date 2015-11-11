@@ -46,9 +46,8 @@ UserStore.dispatcherIndex = AppDispatcher.register(function(payload) {
 
     switch(action.actionType) {
         case userConstants.USER_CREATE:
-            content = action.content;
-            if (Object.keys(content).length !== 0) {
-                create(content);
+            if (Object.keys(action.content).length !== 0) {
+                create(action.content);
                 UserStore.emitChange();
             }
             break;
