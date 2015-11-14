@@ -6,6 +6,7 @@ var AuthActions = require('../actions/AuthActions.js');
 var SearchActions = require('../actions/SearchActions.js');
 var History = require('react-router').History;
 var RouteContext = require('react-router').RouteContext;
+var Spinner = require('./Spinner.js');
 //{data.map((element, index) => {
 //    return <li key={index}><a href="#">{element}</a></li>
 //})}
@@ -39,7 +40,7 @@ module.exports = React.createClass({
         }
     },
     _onSearch: function () {
-        if(this.history.isActive('/search')) {
+        if (this.history.isActive('/search')) {
             SearchActions.search(this.state);
         }
         this.history.pushState(null, '/search', this.state);
@@ -51,8 +52,10 @@ module.exports = React.createClass({
             <div>
                 <div className='navbar navbar-inverse' id='inter-navbar'>
                     <div className='container-fluid'>
-                        <Link to='/' className='navbar-brand'>Welcome {this.props.user.firstName}</Link>
+                        <Link to='/'
+                              className={this.props.showSpinner ? 'hidden' : 'navbar-brand'}>Welcome {this.props.user.firstName}</Link>
 
+                        <div className={this.props.showSpinner ? 'navbar-brand': 'hidden'}><Spinner></Spinner></div>
                         <div className='navbar-right'>
                             <ul className='nav navbar-nav'>
                                 <li>

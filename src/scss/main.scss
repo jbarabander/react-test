@@ -8,6 +8,7 @@
 @import 'general.scss';
 @import 'navbar.scss';
 @import 'contact.scss';
+@import 'spinner.scss';
 
 @font-face {
   font-family: 'Moon-light';
@@ -18,4 +19,8 @@
 
 body{
   font-family: 'Moon-light', sans-serif;
+}
+
+.hidden {
+  display: hidden;
 }

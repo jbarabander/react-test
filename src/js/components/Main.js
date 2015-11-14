@@ -6,6 +6,7 @@ var AuthStore = require('../stores/AuthStore.js');
 var SignUp = require('./SignUp.js');
 var Navbar = require('./Navbar.js');
 var AuthActions = require('../actions/AuthActions.js');
+var Spinner = require('./Spinner.js');
 function getUserState() {
     return {
         allUsers: UserStore.getAll()
@@ -28,7 +29,8 @@ var App = React.createClass({
         return {
             loggedInUser: null,
             passage: 'Meet me in the middle!',
-            allUsers: getUserState().allUsers
+            allUsers: getUserState().allUsers,
+            showSpinner: false
         }
     },
     componentDidMount: function() {
@@ -43,7 +45,7 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
-                <Navbar user={isLoggedIn() ? this.state.loggedInUser : ''}></Navbar>
+                <Navbar user={isLoggedIn() ? this.state.loggedInUser : ''} showSpinner={this.state.showSpinner}></Navbar>
                 {this.props.children}
             </div>
         )
