@@ -2,6 +2,7 @@ var AppDispatcher = require('../dispatchers/AppDispatcher.js');
 var userConstants = require('../constants/userConstants.js');
 var authConstants = require('../constants/authConstants.js'); //FIXME
 var RouterContainer = require('../containers/RouterContainer.js');
+var LoadingActions = require('./LoadingActions.js');
 var request = require('superagent');
 
 function create(content) {
