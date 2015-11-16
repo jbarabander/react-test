@@ -6,7 +6,9 @@ var AuthStore = require('../stores/AuthStore.js');
 var SignUp = require('./SignUp.js');
 var Navbar = require('./Navbar.js');
 var AuthActions = require('../actions/AuthActions.js');
+var SpinnerStore = require('../stores/SpinnerStore.js');
 var Spinner = require('./Spinner.js');
+
 function getUserState() {
     return {
         allUsers: UserStore.getAll()
@@ -23,9 +25,15 @@ function isLoggedIn() {
     return AuthStore.isLoggedIn();
 }
 
+function getSpinnerStatus() {
+    return {
+        showSpinner: SpinnerStore.getSpinnerStatus()
+    }
+}
+
 //<StartScreen name={this.state.name} passage={this.state.passage}/>
 var App = React.createClass({
-    getInitialState: function() {
+    getInitialState: function () {
         return {
             loggedInUser: null,
             passage: 'Meet me in the middle!',
@@ -33,26 +41,31 @@ var App = React.createClass({
             showSpinner: false
         }
     },
-    componentDidMount: function() {
+    componentDidMount: function () {
         //UserStore.addChangeListener(this._onChange);
         AuthStore.addChangeListener(this._onChange);
+        SpinnerStore.addChangeListener(this._onSearch);
         AuthActions.getSession();
     },
-    componentWillUnmount: function() {
+    componentWillUnmount: function () {
         //UserStore.removeChangeListener(this._onChange)
         AuthStore.removeChangeListener(this._onChange);
     },
-    render: function() {
+    render: function () {
         return (
             <div>
-                <Navbar user={isLoggedIn() ? this.state.loggedInUser : ''} showSpinner={this.state.showSpinner}></Navbar>
+                <Navbar user={isLoggedIn() ? this.state.loggedInUser : ''}
+                        showSpinner={this.state.showSpinner}></Navbar>
                 {this.props.children}
             </div>
         )
     },
-    _onChange: function() {
+    _onChange: function () {
         //this.setState(getUserState());
         this.setState(getLogin());
+    },
+    _onSearch: function () {
+        this.setState(getSpinnerStatus());
     }
 });
 
