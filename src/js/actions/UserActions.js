@@ -8,9 +8,9 @@ var request = require('superagent');
 function create(content) {
     delete content.repeatedPassword;
     request.post('api/users')
-    .send(content)
-    .end(function(err, res) {
-            if(err) throw new Error(err.message);
+        .send(content)
+        .end(function (err, res) {
+            if (err) throw new Error(err.message);
             AppDispatcher.handleViewAction({
                 actionType: userConstants.USER_CREATE,
                 content: JSON.parse(res.text)
@@ -21,6 +21,19 @@ function create(content) {
             });
             RouterContainer.get().history.pushState(null, '/');
         });
+}
+
+function getUser(id) {
+    console.log(id);
+    request.get('/api/users/' + id)
+        .end(function (err, res) {
+            console.log(res);
+            if (err) throw new Error(err.message);
+            AppDispatcher.handleViewAction({
+                actionType: userConstants.USER_SET,
+                content: JSON.parse(res.text)
+            })
+        })
 }
 
 function destroy(id) {
@@ -41,5 +54,6 @@ function update(id, content) {
 module.exports = {
     create: create,
     destroy: destroy,
-    update: update
+    update: update,
+    getUser: getUser
 }

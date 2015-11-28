@@ -36,6 +36,7 @@ router.get('/', function(req, res, next) {
 //FIXME: Possibly??
 
 router.get('/:userId', function(req, res) {
+    console.log(req.foundUser);
     res.json(req.foundUser);
 });
 

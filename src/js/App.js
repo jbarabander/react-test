@@ -11,6 +11,7 @@ var SignUp = require('./components/SignUp.js');
 var Login = require('./components/Login.js');
 var Contact = require('./components/Contact.js');
 var Search = require('./components/Search.js');
+var User = require('./components/User.js');
 var attachFastClick = require('fastclick');
 attachFastClick(document.body);
 var createBrowserHistory = require('history/lib/createBrowserHistory');
@@ -26,6 +27,7 @@ var AppRouter = ReactDom.render((
             <Route path='login' component={Login}/>
             <Route path='contact' component={Contact}/>
             <Route path='search' component={Search}/>
+            <Route path='/users/:id' component={User}/>
         </Route>
     </Router>
     ), document.getElementById('content'));
