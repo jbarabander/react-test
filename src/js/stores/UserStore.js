@@ -5,6 +5,7 @@ var userConstants = require('../constants/userConstants.js');
 var _ = require('lodash');
 
 var _users = {};
+var _currentUser;
 var CHANGE_EVENT = 'userChange';
 
 function create(content) {
@@ -28,6 +29,14 @@ var UserStore = Object.create(EventEmitter.prototype);
 UserStore.getAll = function() {
     return _users;
 };
+
+UserStore.getUser = function() {
+    return _currentUser;
+}
+
+UserStore.setCurrentUser = function(user) {
+    _currentUser = user;
+}
 
 UserStore.emitChange = function() {
     this.emit(CHANGE_EVENT);
@@ -61,6 +70,9 @@ UserStore.dispatcherIndex = AppDispatcher.register(function(payload) {
             update(action.id, action.content);
             UserStore.emitChange();
             break;
+        case userConstants.USER_SET:
+            UserStore.getUser();
+            UserStore.emitChange();
 
         // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }
