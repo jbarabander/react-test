@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var React = require('react');
 var ReactDom = require('react-dom');
@@ -30,6 +30,6 @@ var AppRouter = ReactDom.render((
             <Route path='/users/:id' component={User}/>
         </Route>
     </Router>
-    ), document.getElementById('content'));
+), document.getElementById('content'));
 
 RouterContainer.set(AppRouter);
