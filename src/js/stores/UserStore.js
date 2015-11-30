@@ -71,7 +71,7 @@ UserStore.dispatcherIndex = AppDispatcher.register(function(payload) {
             UserStore.emitChange();
             break;
         case userConstants.USER_SET:
-            UserStore.getUser();
+            UserStore.setCurrentUser(action.content);
             UserStore.emitChange();
 
         // add more cases for other actionTypes, like TODO_UPDATE, etc.

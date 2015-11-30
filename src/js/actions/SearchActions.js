@@ -5,7 +5,7 @@ var LoadingActions = require('./LoadingActions.js');
 
 var search = (content) => {
     LoadingActions.startLoading();
-    request.get('api/search')
+    request.get('/api/search')
         .query(content)
         .end((err, res) => {
             LoadingActions.stopLoading();

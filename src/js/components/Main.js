@@ -5,9 +5,11 @@ var UserStore = require('../stores/UserStore.js');
 var AuthStore = require('../stores/AuthStore.js');
 var SignUp = require('./SignUp.js');
 var Navbar = require('./Navbar.js');
+var User = require('./User.js'); //FIXME
 var AuthActions = require('../actions/AuthActions.js');
 var SpinnerStore = require('../stores/SpinnerStore.js');
 var Spinner = require('./Spinner.js');
+var propRouter = require('../propRouter');
 
 function getUserState() {
     return {
@@ -31,7 +33,6 @@ function getSpinnerStatus() {
         showSpinner: SpinnerStore.getSpinnerStatus()
     }
 }
-
 //<StartScreen name={this.state.name} passage={this.state.passage}/>
 var App = React.createClass({
     getInitialState: function () {
@@ -53,13 +54,23 @@ var App = React.createClass({
     componentWillUnmount: function () {
         //UserStore.removeChangeListener(this._onChange)
         AuthStore.removeChangeListener(this._onChange);
+        UserStore.removeChangeListener(this._onGetUser);
+        SpinnerStore.removeChangeListener(this._onSearch);
+    },
+    renderChildren: function() {
+        var self = this;
+        return React.Children.map(this.props.children, function (element) {
+            console.log(element);
+            return propRouter(element, self.state);
+        })
     },
     render: function () {
         return (
             <div>
                 <Navbar user={isLoggedIn() ? this.state.loggedInUser : ''}
                         showSpinner={this.state.showSpinner}></Navbar>
-                {this.props.children}
+                {/*this.props.children*/}
+                {this.renderChildren()}
             </div>
         )
     },

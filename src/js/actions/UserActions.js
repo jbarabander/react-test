@@ -7,7 +7,7 @@ var request = require('superagent');
 
 function create(content) {
     delete content.repeatedPassword;
-    request.post('api/users')
+    request.post('/api/users')
         .send(content)
         .end(function (err, res) {
             if (err) throw new Error(err.message);
