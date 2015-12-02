@@ -7,5 +7,8 @@ module.exports = function(element, state) {
             elementToReturn = cloneElement(element, {foundUser: state.currentUser});
             break;
     }
+    if(element.props.location.pathname === '/') {
+        elementToReturn = cloneElement(element, {passage: state.passage});
+    }
     return elementToReturn;
 };
