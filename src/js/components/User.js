@@ -18,6 +18,7 @@ module.exports = React.createClass({
         console.log(this.state.user);
         return (
             <div className='container'>
+                {/*<h3>{this.props.foundUser ? this.props.foundUser.username : null }</h3>*/}
                 <h3>{this.state.user ? this.state.user.username : null }</h3>
                 {/*<div>header</div>
                 <div className='or-with-line'>
