@@ -14,7 +14,7 @@ var propRouter = require('../propRouter');
 function getUserState() {
     return {
         allUsers: UserStore.getAll(),
-        currentUser: UserStore.getUser()
+        //currentUser: UserStore.getUser()
     };
 }
 
@@ -40,7 +40,7 @@ var App = React.createClass({
             loggedInUser: null,
             passage: 'Meet me in the middle!',
             allUsers: getUserState().allUsers,
-            currentUser: getUserState().currentUser,
+            //currentUser: getUserState().currentUser,
             showSpinner: false
         }
     },
@@ -48,7 +48,7 @@ var App = React.createClass({
         //UserStore.addChangeListener(this._onChange);
         AuthStore.addChangeListener(this._onChange);
         SpinnerStore.addChangeListener(this._onSearch);
-        UserStore.addChangeListener(this._onGetUser);
+        //UserStore.addChangeListener(this._onGetUser);
         AuthActions.getSession();
     },
     componentWillUnmount: function () {
@@ -69,8 +69,8 @@ var App = React.createClass({
             <div>
                 <Navbar user={isLoggedIn() ? this.state.loggedInUser : ''}
                         showSpinner={this.state.showSpinner}></Navbar>
-                {/*this.props.children*/}
-                {this.renderChildren()}
+                {this.props.children}
+                {/* this.renderChildren()*/}
             </div>
         )
     },
@@ -81,9 +81,9 @@ var App = React.createClass({
     _onSearch: function () {
         this.setState(getSpinnerStatus());
     },
-    _onGetUser: function () {
-        this.setState(getUserState());
-    }
+    //_onGetUser: function () {
+    //    this.setState(getUserState());
+    //}
 });
 
 module.exports = App;
