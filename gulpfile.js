@@ -18,6 +18,7 @@ var path = {
     MINIFIED_OUT: 'build.min.js',
     OUT: 'build.js',
     DEST: 'dist',
+    DEST_VIEWS: 'dist/views',
     DEST_BUILD: 'dist/build',
     DEST_SRC: 'dist/src',
     ENTRY_POINT: './src/js/App.js',
@@ -29,7 +30,7 @@ var path = {
 
 gulp.task('copy', function () {
     gulp.src(path.HTML)
-        .pipe(gulp.dest(path.DEST));
+        .pipe(gulp.dest(path.DEST_VIEWS));
 });
 
 gulp.task('watch', function () {
@@ -79,7 +80,7 @@ gulp.task('replaceHTML', function () {
         .pipe(htmlreplace({
             'js': 'build/' + path.MINIFED_OUT
         }))
-        .pipe(gulp.dest(path.DEST));
+        .pipe(gulp.dest(path.DEST_VIEWS));
 });
 gulp.task('buildFonts', function () {
     gulp.src(path.FONTS)

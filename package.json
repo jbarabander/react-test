@@ -41,9 +41,11 @@
     "react-router": "^1.0.0-rc3",
     "redux": "^3.0.4",
     "redux-devtools": "^2.1.5",
+    "rx": "^4.0.7",
     "serve-favicon": "^2.3.0",
     "spinkit": "^1.2.2",
     "superagent": "^1.4.0",
+    "swig": "^1.4.2",
     "typeahead": "^0.2.0",
     "vinyl-source-stream": "^1.1.0"
   },

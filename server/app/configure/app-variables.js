@@ -4,7 +4,8 @@ var chalk = require('chalk');
 var util = require('util');
 
 var rootPath = path.join(__dirname, '../../../');
-var indexPath = path.join(rootPath, './dist/index.html');
+var indexPath = path.join(rootPath, './dist/views/index.html');
+var viewsPath = path.join(rootPath, './dist/views');
 var faviconPath = path.join(rootPath, './server/app/views/favicon.ico');
 
 var env = require(path.join(rootPath, './server/env'));
@@ -18,6 +19,9 @@ var logMiddleware = function (req, res, next) {
 };
 
 module.exports = function (app) {
+    app.engine('html', require('swig').renderFile);
+    app.set('view engine', 'html');
+    app.set('views', viewsPath);
     app.setValue('env', env);
     app.setValue('projectRoot', rootPath);
     app.setValue('indexHTMLPath', indexPath);
