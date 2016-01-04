@@ -33,8 +33,7 @@ app.use(function (req, res, next) {
 //})
 
 app.get('/*', function (req, res) {
-    console.log('hi');
-    res.sendFile(app.get('indexHTMLPath'));
+    res.render('index', {GOOGLE_API_KEY: app.get('env').GOOGLE_API_KEY});
 });
 
 // Error catching endware.

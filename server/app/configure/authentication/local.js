@@ -14,14 +14,19 @@ module.exports = function (app) {
             .select('+password');
         query.exec(function(err, user) {
             if(err) return next(err);
+            if(!user) {
+                var userNotFoundError = new Error('User not found');
+                userNotFoundError.status = 404;
+                return next(userNotFoundError);
+            }
             user.authenticate(password, function(err, result) {
                 if(err) return next(err);
                 if(result) return req.login(user, function() {
                     delete user.password;
                     res.json(user);
                 });
-                var error = new Error('authentication failed');
-                error.status = 401;
+                var authFailedError = new Error('authentication failed');
+                authFailedError.status = 401;
                 next(error);
             });
         });
