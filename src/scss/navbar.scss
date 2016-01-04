@@ -2,7 +2,6 @@ $login-btn-hover-color: #039be5;
 $contact-btn-hover-color: #F06D71;
 $home-btn-hover-color: #ffb300;
 $signup-btn-hover-color: #00D478;
-//$search-btn-hover-color: #7c4dff;
 
 #inter-navbar {
   background: #37474f;
@@ -30,9 +29,9 @@ $signup-btn-hover-color: #00D478;
   display: inline-block;
   position: relative;
   color: white !important;
+  //min-width: 96px;
+  //text-align: center;
   box-sizing: border-box;
-  //border-right: 1px solid white;
-  //border-left: 1px solid white;
   z-index: 1000;
   transition: background-color .4s ease, color .4s ease, border .4s ease, z-index .4s ease;
   &:after {
@@ -40,14 +39,10 @@ $signup-btn-hover-color: #00D478;
   }
   &:hover {
     background-color: $hover-color !important;
-    //color: #1565c0 !important;
-    //border-right: 1px solid $hover-color;
-    //border-left: 1px solid $hover-color;
     z-index: 999;
     &:after {
       box-sizing: content-box;
       width: 100%;
-      //border-right: 2px solid $ul-color;
       background: $ul-color;
     }
   }

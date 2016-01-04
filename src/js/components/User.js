@@ -17,9 +17,23 @@ module.exports = React.createClass({
     render() {
         console.log(this.state.user);
         return (
-            <div className='container'>
+            <div>
+                <div className={this.state.user ? null : 'hidden'}>
+                    <div className='profile-header text-center'>
+                        <div className='profile-title'>
+                            <img src={this._getUserProp('photoUrl')} className='profile-thumbnail'/>
+                            <p>{this._getUserProp('email')}</p>
+                        </div>
+                        {/*<h2 className='text-center'>{this._getUserProp('username')}</h2>*/}
+                    </div>
+                    <div className='profile-body'>
+                        <div className='text-center'>
+                        </div>
+                    </div>
+                </div>
+
                 {/*<h3>{this.props.foundUser ? this.props.foundUser.username : null }</h3>*/}
-                <h3>{this.state.user ? this.state.user.username : null }</h3>
+
                 {/*<div>header</div>
                 <div className='or-with-line'>
                     <h6>Recent Places</h6>
@@ -30,5 +44,16 @@ module.exports = React.createClass({
     },
     _onGetUser() {
         this.setState({user: UserStore.getUser()});
+    },
+    _getUserProp(propName) {
+        if(this.state.user) {
+            return this.state.user[propName];
+        }
+        return null;
+    },
+    _getImgUrl() {
+        var photoUrl = this._getUserProp('photoUrl');
+        if (photoUrl === null) return null;
+        //if (photoUrl === undefined) return
     }
 });
