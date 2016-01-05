@@ -15,13 +15,14 @@ module.exports = React.createClass({
         UserStore.removeChangeListener(this._onGetUser);
     },
     render() {
-        console.log(this.state.user);
+        //console.log(this.state.user);
         return (
             <div>
                 <div className={this.state.user ? null : 'hidden'}>
                     <div className='profile-header text-center'>
                         <div className='profile-title'>
                             <img src={this._getUserProp('photoUrl')} className='profile-thumbnail'/>
+                            <p>{this._getUserProp('firstName')} {this._getUserProp('lastName')}</p>
                             <p>{this._getUserProp('email')}</p>
                         </div>
                         {/*<h2 className='text-center'>{this._getUserProp('username')}</h2>*/}
@@ -51,9 +52,4 @@ module.exports = React.createClass({
         }
         return null;
     },
-    _getImgUrl() {
-        var photoUrl = this._getUserProp('photoUrl');
-        if (photoUrl === null) return null;
-        //if (photoUrl === undefined) return
-    }
 });

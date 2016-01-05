@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var bcrypt = Promise.promisifyAll(require('bcrypt'));
 var md5 = require('md5');
+var phoneNumberRegex = /^1?\d{10} | \d{11}/; //FIXME
 
 var schema = mongoose.Schema({
     username: {
@@ -29,7 +30,7 @@ var schema = mongoose.Schema({
     photoUrl: {
         type: String
     },
-    backgroundUrl: {
+    headerUrl: {
         type: String
     },
     twitter: {
@@ -44,6 +45,16 @@ var schema = mongoose.Schema({
     google: {
         id: String
     },
+    phoneNumber: {
+        type: String,
+        validate: {
+            validator: function(v) {
+                return /\d{10} | \d{11}/.test(v);
+            },
+            message: '{VALUE} is not a valid phone number.'
+        }
+
+    }
 });
 
 schema.methods.hash = function(pass, cb) {
@@ -77,8 +88,7 @@ schema.methods.authenticate = function(pass, cb) {
 };
 
 schema.methods.generateDefaultImg = function() {
-    var trimAndLowCaseEmail = this.email.trim().toLowerCase();
-    this.photoUrl = 'http://www.gravatar.com/avatar/' + md5(trimAndLowCaseEmail) + '?d=identicon&s=160';
+    this.photoUrl = 'http://www.gravatar.com/avatar/' + md5(this.email.trim().toLowerCase()) + '?d=identicon&s=160';
 };
 
 schema.methods.authenticatePromise = function(pass) {
