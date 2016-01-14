@@ -92,7 +92,7 @@ gulp.task('buildFonts', function () {
 gulp.task('buildImages', function() {
     gulp.src(path.IMAGES)
     .pipe(gulp.dest(path.DEST));
-    gulp.src('./src/images/*.jpg')
+    gulp.src(['./src/images/*.jpg', './src/images/*.png'])
     .pipe(gulp.dest(path.IMAGES_DEST));
 })
 
