@@ -27,9 +27,9 @@ module.exports = React.createClass({
                         </div>
                         {/*<h2 className='text-center'>{this._getUserProp('username')}</h2>*/}
                     </div>
-                    <div className='profile-body'>
+                    <div className='profile-body container'>
                         <div>
-                            
+                            <h4>Where's {this._getUserProp('firstName')}, been lately?</h4>
                         </div>
                     </div>
                 </div>

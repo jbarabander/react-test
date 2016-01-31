@@ -4,6 +4,7 @@ var Promise = require('bluebird');
 var bcrypt = Promise.promisifyAll(require('bcrypt'));
 var md5 = require('md5');
 var phoneNumberRegex = /^1?\d{10} | \d{11}/; //FIXME
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var schema = mongoose.Schema({
     username: {
@@ -53,9 +54,29 @@ var schema = mongoose.Schema({
             },
             message: '{VALUE} is not a valid phone number.'
         }
+    },
+    placesVisited: [
+        {
+            date: {
+                type: Date,
+                default: Date.now
+            },
+            location: {
+                type: ObjectId,
+                ref: 'Location'
 
-    }
+            }
+        }
+    ]
 });
+
+
+schema.methods.findRecentVisits = function(timePeriod, date) {
+    var dateToTestAgainst = date ? date: Date.now();
+    this.placesVisited.filter(function(element) {
+        return element.date < dateToTestAgainst + timePeriod;
+    })
+};
 
 schema.methods.hash = function(pass, cb) {
     var self = this;
