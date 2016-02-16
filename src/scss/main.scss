@@ -31,8 +31,53 @@
   src: url('./fonts/Moon Light.otf');
 }
 
+@font-face {
+  font-family: 'SkarpaLt';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/SkarpaLt.ttf');
+}
+
+@font-face {
+  font-family: 'Summit-Title';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/SummitThin-Display.otf');
+}
+
+@font-face {
+  font-family: 'minimal';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/minimal.otf');
+}
+
+@font-face {
+  font-family: 'quicksand';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/QuickSand-Regular.otf');
+}
+
 body{
   font-family: 'Moon-light', sans-serif;
+  //font-family: 'SkarpaLt', sans-serif;
+  //font-family: 'minimal', sans-serif;
+}
+
+.modify-input-font {
+  input {
+    font-family: 'quicksand', sans-serif;
+  }
+}
+
+.display-in-quicksand {
+  font-family: 'quicksand', sans-serif;
+}
+
+
+.display-in-minimal {
+  font-family: 'minimal', sans-serif;
 }
 
 .hidden {

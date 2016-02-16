@@ -85,7 +85,7 @@ gulp.task('replaceHTML', function () {
 gulp.task('buildFonts', function () {
     gulp.src(path.FONTS)
         .pipe(gulp.dest(path.DEST));
-    gulp.src('./src/fonts/*.otf')
+    gulp.src(['./src/fonts/*.otf', './src/fonts/*.ttf'])
         .pipe(gulp.dest(path.FONT_DEST));
 })
 

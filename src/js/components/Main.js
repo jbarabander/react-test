@@ -60,7 +60,6 @@ var App = React.createClass({
     renderChildren: function() {
         var self = this;
         return React.Children.map(this.props.children, function (element) {
-            console.log(element);
             return propRouter(element, self.state);
         })
     },

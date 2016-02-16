@@ -73,9 +73,9 @@ var schema = mongoose.Schema({
 
 schema.methods.findRecentVisits = function(timePeriod, date) {
     var dateToTestAgainst = date ? date: Date.now();
-    this.placesVisited.filter(function(element) {
-        return element.date < dateToTestAgainst + timePeriod;
-    })
+    return this.placesVisited.filter(function(element) {
+        return element.date - dateToTestAgainst <= timePeriod;
+    });
 };
 
 schema.methods.hash = function(pass, cb) {
@@ -114,6 +114,10 @@ schema.methods.generateDefaultImg = function() {
 
 schema.methods.authenticatePromise = function(pass) {
     return bcrypt.compareAsync(pass, this.password)
+};
+
+schema.methods.changePassword = function(pass, cb) {
+    this.hash(pass, cb);
 };
 
 schema.pre('save', function(next) {

@@ -5,9 +5,8 @@ var LocalSignUp = require('./LocalSignUp');
 
 module.exports = React.createClass({
     render: function() {
-        console.log(this.props);
         return (
-            <div className='container'>
+            <div className='container modify-input-font'>
                 <h1>Sign Up</h1>
                 <div className='signup-container'>
                     <div className='flex-container'>

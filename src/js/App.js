@@ -31,5 +31,4 @@ var AppRouter = ReactDom.render((
         </Route>
     </Router>
 ), document.getElementById('content'));
-console.log(AppRouter);
 RouterContainer.set(AppRouter);
